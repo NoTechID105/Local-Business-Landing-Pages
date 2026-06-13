@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aurelia Studio — Premium Everyday Wear for Modern Women</title>
+<meta content="Discover premium wardrobe essentials designed for comfort, confidence, and timeless daily wear. Effortless everyday style by Aurelia Studio." name="description"/>
+<meta content="Aurelia Studio — Premium Everyday Wear" property="og:title"/>
+<meta content="Modern wardrobe essentials with clean silhouettes, soft textures, and neutral tones." property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="/fashion/style.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ============================================================
+       1. SITE HEADER / NAVBAR
+       ============================================================ -->
+<header class="site-header">
+<nav class="main-nav container">
+<div class="nav-left">
+<a class="nav-link" href="/demo/aurelia-studio/collection">Collections</a>
+<a class="nav-link" href="#lookbook">Lookbook</a>
+</div>
+<div class="nav-center">
+<a class="nav-brand" href="/demo/aurelia-studio/#home">AURELIA STUDIO</a>
+</div>
+<div class="nav-right">
+<a class="nav-link" href="#size-guide">Size Guide</a>
+<a class="nav-link" href="#reviews">Reviews</a>
+</div>
+<button aria-expanded="false" aria-label="Open menu" class="hamburger">
+<span></span><span></span><span></span>
+</button>
+</nav>
+</header>
+<!-- Mobile Menu -->
+<div aria-hidden="true" class="mobile-menu">
+<div class="mobile-menu-header">
+<span class="nav-brand">AURELIA STUDIO</span>
+<button aria-label="Close menu" class="mobile-menu-close">×</button>
+</div>
+<nav class="mobile-menu-links">
+<a href="/demo/aurelia-studio/collection">Collections</a>
+<a href="#lookbook">Lookbook</a>
+<a href="#size-guide">Size Guide</a>
+<a href="#reviews">Reviews</a>
+
+</nav>
+</div>
+<!-- ============================================================
+       2. HERO CAROUSEL
+       ============================================================ -->
+<section aria-label="Hero carousel" class="hero" id="home">
+<!-- Slide 1 -->
+<div class="hero-slide active" data-index="0">
+<img alt="Woman in elegant neutral outfit walking confidently in golden light" class="hero-slide-bg" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1920&amp;q=80"/>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<span class="hero-eyebrow">NEW COLLECTION · 2026</span>
+<h1 class="hero-headline">Effortless essentials for modern everyday style.</h1>
+<p class="hero-sub">Discover premium wardrobe pieces designed for comfort, confidence, and timeless daily wear.</p>
+<div class="hero-ctas">
+<a class="btn-primary" href="/demo/aurelia-studio/collection">View Collection</a>
+<a class="btn-secondary" href="#lookbook">View Lookbook</a>
+</div>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="hero-slide" data-index="1">
+<img alt="Model wearing soft layered knitwear in warm afternoon light" class="hero-slide-bg" loading="lazy" src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=1920&amp;q=80"/>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<span class="hero-eyebrow">LIMITED DROP</span>
+<h1 class="hero-headline">Soft layers for slow mornings and city afternoons.</h1>
+<p class="hero-sub">Explore breathable fabrics, relaxed silhouettes, and versatile pieces for every plan.</p>
+<div class="hero-ctas">
+<a class="btn-primary" href="/demo/aurelia-studio/collection">Explore Knitwear</a>
+<a class="btn-secondary" href="#lookbook">See Styling Ideas</a>
+</div>
+</div>
+</div>
+<!-- Slide 3 -->
+<div class="hero-slide" data-index="2">
+<img alt="Woman in minimal capsule wardrobe outfit against clean background" class="hero-slide-bg" loading="lazy" src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1920&amp;q=80"/>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<span class="hero-eyebrow">EDITORIAL LOOKBOOK</span>
+<h1 class="hero-headline">Minimal pieces. Endless outfit possibilities.</h1>
+<p class="hero-sub">Build a capsule wardrobe with timeless essentials that feel polished without effort.</p>
+<div class="hero-ctas">
+<a class="btn-primary" href="#lookbook">Browse Lookbook</a>
+<a class="btn-secondary" href="#order">Start Styling</a>
+</div>
+</div>
+</div>
+<!-- Featured Card -->
+<a aria-label="Explore the featured collection" class="hero-featured-card" href="/demo/aurelia-studio/collection">
+<span class="hero-featured-label">FEATURED</span>
+<h3 class="hero-featured-title">The Everyday Capsule</h3>
+<span class="hero-featured-link">Explore the collection →</span>
+</a>
+<!-- Controls -->
+<div class="hero-controls">
+<span class="hero-slide-counter"><span class="hero-current">01</span> / <span class="hero-total">03</span></span>
+<div class="hero-progress"><div class="hero-progress-bar"></div></div>
+</div>
+<!-- Dots -->
+<div class="hero-dots">
+<button aria-label="Go to slide 1" class="hero-dot active" data-slide="0"></button>
+<button aria-label="Go to slide 2" class="hero-dot" data-slide="1"></button>
+<button aria-label="Go to slide 3" class="hero-dot" data-slide="2"></button>
+</div>
+</section>
+<!-- ============================================================
+       3. BRAND INTRO
+       ============================================================ -->
+<section class="brand-intro section-padding">
+<div class="container brand-intro-grid">
+<div class="brand-intro-left">
+<h2 class="brand-intro-heading reveal">Designed for effortless everyday confidence.</h2>
+</div>
+<div class="brand-intro-content reveal">
+<p class="brand-intro-desc">Aurelia Studio creates modern wardrobe essentials with clean silhouettes, soft textures, and neutral tones made for daily wear.</p>
+<div class="value-items">
+<div class="value-item">
+<h4 class="value-item-title">Premium Fabric</h4>
+<p class="value-item-desc">Soft materials selected for comfort, movement, and everyday elegance.</p>
+</div>
+<div class="value-item">
+<h4 class="value-item-title">Timeless Fit</h4>
+<p class="value-item-desc">Clean silhouettes designed to stay relevant beyond seasonal trends.</p>
+</div>
+<div class="value-item">
+<h4 class="value-item-title">Small Batch Drops</h4>
+<p class="value-item-desc">Limited collections created with intention, care, and refined detail.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       4. NEW ARRIVALS / COLLECTION
+       ============================================================ -->
+<section class="collection-section section-padding" id="collection">
+<div class="container">
+<div class="section-header reveal">
+<div>
+<h2 class="section-title">New Arrivals</h2>
+<p class="section-subtitle">Curated essentials for a clean and effortless wardrobe.</p>
+</div>
+<a class="section-link section-link-button" href="/demo/aurelia-studio/collection">View All</a>
+</div>
+<div class="product-grid">
+<!-- Product 1: Linen Relaxed Shirt -->
+<div aria-label="View details for Linen Relaxed Shirt" class="product-card reveal" data-product-id="linen-relaxed-shirt" role="button" tabindex="0">
+<div class="product-image-wrap">
+<img alt="Linen relaxed shirt in neutral tone displayed on a flat lay" class="product-image" loading="lazy" src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<span class="product-badge">BEST SELLER</span>
+<div class="product-overlay"><button class="btn-primary product-quick-view" data-product-id="linen-relaxed-shirt" type="button">View Details</button></div>
+</div>
+<div class="product-info">
+<div class="product-info-top">
+<h3 class="product-name">Linen Relaxed Shirt</h3>
+<span class="product-price">$49</span>
+</div>
+<p class="product-desc">A breathable linen shirt with a relaxed everyday fit.</p>
+<p class="product-colors">Ivory / Sand / Black</p><button class="product-detail-link" data-product-id="linen-relaxed-shirt" type="button">View Details →</button>
+</div>
+</div>
+<!-- Product 2: Soft Knit Cardigan -->
+<div aria-label="View details for Soft Knit Cardigan" class="product-card reveal" data-product-id="soft-knit-cardigan" role="button" tabindex="0">
+<div class="product-image-wrap">
+<img alt="Soft knit cardigan and neutral clothing pieces on a rack" class="product-image" loading="lazy" src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<span class="product-badge">NEW</span>
+<div class="product-overlay"><button class="btn-primary product-quick-view" data-product-id="soft-knit-cardigan" type="button">View Details</button></div>
+</div>
+<div class="product-info">
+<div class="product-info-top">
+<h3 class="product-name">Soft Knit Cardigan</h3>
+<span class="product-price">$64</span>
+</div>
+<p class="product-desc">A soft layering piece for slow mornings and cool evenings.</p>
+<p class="product-colors">Oat / Mocha / Cream</p><button class="product-detail-link" data-product-id="soft-knit-cardigan" type="button">View Details →</button>
+</div>
+</div>
+<!-- Product 3: Everyday Wide Pants -->
+<div aria-label="View details for Everyday Wide Pants" class="product-card reveal" data-product-id="everyday-wide-pants" role="button" tabindex="0">
+<div class="product-image-wrap">
+<img alt="Everyday wide-leg pants in a clean neutral fashion style" class="product-image" loading="lazy" src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<span class="product-badge">LIMITED</span>
+<div class="product-overlay"><button class="btn-primary product-quick-view" data-product-id="everyday-wide-pants" type="button">View Details</button></div>
+</div>
+<div class="product-info">
+<div class="product-info-top">
+<h3 class="product-name">Everyday Wide Pants</h3>
+<span class="product-price">$58</span>
+</div>
+<p class="product-desc">Easy wide-leg pants designed for movement and comfort.</p>
+<p class="product-colors">Cream / Stone / Black</p><button class="product-detail-link" data-product-id="everyday-wide-pants" type="button">View Details →</button>
+</div>
+</div>
+<!-- Product 4: Minimal Midi Dress -->
+<div aria-label="View details for Minimal Midi Dress" class="product-card reveal" data-product-id="minimal-midi-dress" role="button" tabindex="0">
+<div class="product-image-wrap">
+<img alt="Minimal midi dress with a flowing silhouette" class="product-image" loading="lazy" src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<span class="product-badge">EDITOR'S PICK</span>
+<div class="product-overlay"><button class="btn-primary product-quick-view" data-product-id="minimal-midi-dress" type="button">View Details</button></div>
+</div>
+<div class="product-info">
+<div class="product-info-top">
+<h3 class="product-name">Minimal Midi Dress</h3>
+<span class="product-price">$72</span>
+</div>
+<p class="product-desc">A clean midi dress for workdays, weekends, and dinner plans.</p>
+<p class="product-colors">Black / Sand</p><button class="product-detail-link" data-product-id="minimal-midi-dress" type="button">View Details →</button>
+</div>
+</div>
+<!-- Product 5: Oversized Blazer -->
+<div aria-label="View details for Oversized Blazer" class="product-card reveal" data-product-id="oversized-blazer" role="button" tabindex="0">
+<div class="product-image-wrap">
+<img alt="Oversized blazer in a relaxed structured style" class="product-image" loading="lazy" src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<span class="product-badge">PREMIUM</span>
+<div class="product-overlay"><button class="btn-primary product-quick-view" data-product-id="oversized-blazer" type="button">View Details</button></div>
+</div>
+<div class="product-info">
+<div class="product-info-top">
+<h3 class="product-name">Oversized Blazer</h3>
+<span class="product-price">$89</span>
+</div>
+<p class="product-desc">A structured yet relaxed blazer for polished daily styling.</p>
+<p class="product-colors">Taupe / Charcoal</p><button class="product-detail-link" data-product-id="oversized-blazer" type="button">View Details →</button>
+</div>
+</div>
+<!-- Product 6: Essential Cotton Tee -->
+<div aria-label="View details for Essential Cotton Tee" class="product-card reveal" data-product-id="essential-cotton-tee" role="button" tabindex="0">
+<div class="product-image-wrap">
+<img alt="Essential cotton tee in white folded neatly" class="product-image" loading="lazy" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<span class="product-badge">EVERYDAY</span>
+<div class="product-overlay"><button class="btn-primary product-quick-view" data-product-id="essential-cotton-tee" type="button">View Details</button></div>
+</div>
+<div class="product-info">
+<div class="product-info-top">
+<h3 class="product-name">Essential Cotton Tee</h3>
+<span class="product-price">$29</span>
+</div>
+<p class="product-desc">A soft cotton tee made to become your daily foundation.</p>
+<p class="product-colors">White / Beige / Black</p><button class="product-detail-link" data-product-id="essential-cotton-tee" type="button">View Details →</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       5. CAPSULE SETS
+       ============================================================ -->
+<section class="capsule-section section-padding">
+<div class="container">
+<div class="section-header reveal">
+<div>
+<h2 class="section-title">Build your everyday capsule.</h2>
+<p class="section-subtitle">Curated outfit sets designed to make everyday styling easier.</p>
+</div>
+</div>
+<div class="capsule-grid">
+<!-- Capsule 1: Starter -->
+<div class="capsule-card reveal">
+<div class="capsule-header">
+<h3 class="capsule-name">Capsule Starter</h3>
+<span class="capsule-price">$129</span>
+</div>
+<p class="capsule-desc">3 essential pieces</p>
+<ul class="capsule-items">
+<li>Linen relaxed shirt</li>
+<li>Essential cotton tee</li>
+<li>Everyday wide pants</li>
+</ul>
+<a class="btn-primary capsule-cta" href="https://wa.me/6281234567890?text=Hi%20Aurelia%20Studio%2C%20I%20am%20interested%20in%20the%20Capsule%20Starter%20set.%20Can%20you%20share%20availability%20and%20sizing%20details%3F" rel="noopener" target="_blank">Build Starter Set</a>
+</div>
+<!-- Capsule 2: Weekend Edit (Featured) -->
+<div class="capsule-card featured reveal">
+<div class="capsule-header">
+<h3 class="capsule-name">Weekend Edit</h3>
+<span class="capsule-price">$179</span>
+</div>
+<p class="capsule-desc">Complete casual outfit</p>
+<ul class="capsule-items">
+<li>Soft knit cardigan</li>
+<li>Essential cotton tee</li>
+<li>Wide pants</li>
+<li>Styling note</li>
+</ul>
+<a class="btn-primary capsule-cta" href="https://wa.me/6281234567890?text=Hi%20Aurelia%20Studio%2C%20I%20am%20interested%20in%20the%20Weekend%20Edit%20set.%20Can%20you%20help%20me%20with%20size%20and%20color%20options%3F" rel="noopener" target="_blank">Build Weekend Set</a>
+</div>
+<!-- Capsule 3: Workday Minimal -->
+<div class="capsule-card reveal">
+<div class="capsule-header">
+<h3 class="capsule-name">Workday Minimal</h3>
+<span class="capsule-price">$219</span>
+</div>
+<p class="capsule-desc">Office-ready outfit set</p>
+<ul class="capsule-items">
+<li>Oversized blazer</li>
+<li>Minimal midi dress</li>
+<li>Everyday pants</li>
+<li>Styling support</li>
+</ul>
+<a class="btn-primary capsule-cta" href="https://wa.me/6281234567890?text=Hi%20Aurelia%20Studio%2C%20I%20am%20interested%20in%20the%20Workday%20Minimal%20set.%20Can%20you%20share%20availability%20and%20styling%20details%3F" rel="noopener" target="_blank">Build Workday Set</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       6. EDITORIAL BREAK
+       ============================================================ -->
+<section class="editorial-break">
+<div class="editorial-break-inner">
+<div class="editorial-text reveal">
+<blockquote class="editorial-quote">"Every piece is designed to move with your daily rhythm."</blockquote>
+<p class="editorial-supporting">Minimal silhouettes, premium textures, and effortless styling for modern everyday life.</p>
+</div>
+<div class="editorial-image-wrap">
+<img alt="Close-up of premium fabric texture showing soft weave and neutral tone" class="editorial-image" loading="lazy" src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=1200&amp;q=80"/>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       7. LOOKBOOK GALLERY
+       ============================================================ -->
+<section class="lookbook-section section-padding" id="lookbook">
+<div class="container">
+<div class="section-header reveal">
+<div>
+<h2 class="section-title">Styled for real everyday moments.</h2>
+<p class="section-subtitle">Outfit inspiration for every plan — from slow mornings to evening layers.</p>
+</div>
+<div aria-label="Lookbook carousel controls" class="lookbook-controls">
+<button aria-label="Previous lookbook item" class="lookbook-nav-btn" data-lookbook-prev="" type="button">Prev</button>
+<button aria-label="Next lookbook item" class="lookbook-nav-btn" data-lookbook-next="" type="button">Next</button>
+</div>
+</div>
+<div aria-label="Aurelia Studio lookbook carousel" class="lookbook-carousel reveal">
+<div class="lookbook-track" data-lookbook-track="">
+<a aria-label="View Weekend Casual look" class="lookbook-item featured-look" href="/demo/aurelia-studio/collection">
+<img alt="Weekend casual outfit with relaxed linen layers in warm sunlight" class="lookbook-image" loading="lazy" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&amp;fit=crop&amp;w=1000&amp;q=80"/>
+<span class="lookbook-kicker">01</span>
+<span class="lookbook-label">Weekend Casual</span>
+<div class="lookbook-overlay"><span>View Look →</span></div>
+</a>
+<a aria-label="View Office Minimal look" class="lookbook-item" href="/demo/aurelia-studio/collection">
+<img alt="Office minimal outfit with structured blazer and midi silhouette" class="lookbook-image" loading="lazy" src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<span class="lookbook-kicker">02</span>
+<span class="lookbook-label">Office Minimal</span>
+<div class="lookbook-overlay"><span>View Look →</span></div>
+</a>
+<a aria-label="View Coffee Date look" class="lookbook-item" href="/demo/aurelia-studio/collection">
+<img alt="Coffee date outfit with effortless neutral layers and soft textures" class="lookbook-image" loading="lazy" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<span class="lookbook-kicker">03</span>
+<span class="lookbook-label">Coffee Date</span>
+<div class="lookbook-overlay"><span>View Look →</span></div>
+</a>
+<a aria-label="View Evening Layer look" class="lookbook-item" href="/demo/aurelia-studio/collection">
+<img alt="Evening layer look with draped cardigan and minimal accessories" class="lookbook-image" loading="lazy" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&amp;fit=crop&amp;w=900&amp;q=80"/>
+<span class="lookbook-kicker">04</span>
+<span class="lookbook-label">Evening Layer</span>
+<div class="lookbook-overlay"><span>View Look →</span></div>
+</a>
+<a aria-label="View Travel Essential look" class="lookbook-item" href="/demo/aurelia-studio/collection">
+<img alt="Travel essential capsule outfit with versatile neutral pieces" class="lookbook-image" loading="lazy" src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?auto=format&amp;fit=crop&amp;w=1000&amp;q=80"/>
+<span class="lookbook-kicker">05</span>
+<span class="lookbook-label">Travel Essential</span>
+<div class="lookbook-overlay"><span>View Look →</span></div>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       8. WHY AURELIA STUDIO
+       ============================================================ -->
+<section class="why-section section-padding">
+<div class="container">
+<div class="section-header reveal">
+<div>
+<h2 class="section-title">Why Aurelia Studio</h2>
+<p class="section-subtitle">What makes our everyday essentials different.</p>
+</div>
+</div>
+<div class="why-grid">
+<div class="why-card reveal">
+<span aria-hidden="true" class="why-icon">✦</span>
+<h4 class="why-title">Soft breathable fabric</h4>
+<p class="why-desc">Premium everyday materials selected for comfort, movement, and long wear.</p>
+</div>
+<div class="why-card reveal">
+<span aria-hidden="true" class="why-icon">◈</span>
+<h4 class="why-title">Easy to mix and match</h4>
+<p class="why-desc">Neutral tones and clean silhouettes that work across different moments.</p>
+</div>
+<div class="why-card reveal">
+<span aria-hidden="true" class="why-icon">◇</span>
+<h4 class="why-title">Limited seasonal drops</h4>
+<p class="why-desc">Small-batch collections created with intention instead of mass production.</p>
+</div>
+<div class="why-card reveal">
+<span aria-hidden="true" class="why-icon">♡</span>
+<h4 class="why-title">Personal styling support</h4>
+<p class="why-desc">Ask for sizing, fabric details, and outfit recommendations before ordering.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       9. SIZE & FIT GUIDE
+       ============================================================ -->
+<section class="size-guide-section section-padding" id="size-guide">
+<div class="container">
+<div class="section-header reveal">
+<div>
+<h2 class="section-title">Size &amp; Fit Guide</h2>
+<p class="section-subtitle">Find your perfect fit with our straightforward sizing.</p>
+</div>
+</div>
+<div class="fit-cards reveal">
+<div class="fit-card">
+<h4 class="fit-card-title">Relaxed Fit</h4>
+<p class="fit-card-desc">Designed with a comfortable, easy silhouette.</p>
+</div>
+<div class="fit-card">
+<h4 class="fit-card-title">True to Size</h4>
+<p class="fit-card-desc">Most pieces follow standard sizing.</p>
+</div>
+<div class="fit-card">
+<h4 class="fit-card-title">Fabric Feel</h4>
+<p class="fit-card-desc">Soft, breathable, and made for daily movement.</p>
+</div>
+<div class="fit-card">
+<h4 class="fit-card-title">Need Help?</h4>
+<p class="fit-card-desc">Chat with us for size and styling recommendations.</p>
+</div>
+</div>
+<div class="size-table-wrap reveal">
+<table class="size-table">
+<thead>
+<tr>
+<th scope="col">Size</th>
+<th scope="col">Bust</th>
+<th scope="col">Waist</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td>82–86 cm</td>
+<td>64–68 cm</td>
+</tr>
+<tr>
+<td>M</td>
+<td>87–92 cm</td>
+<td>69–74 cm</td>
+</tr>
+<tr>
+<td>L</td>
+<td>93–98 cm</td>
+<td>75–80 cm</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       10. REVIEWS
+       ============================================================ -->
+<section class="reviews-section section-padding" id="reviews">
+<div class="container">
+<div class="section-header reveal">
+<div>
+<h2 class="section-title">What our customers say</h2>
+<p class="section-subtitle">Real feedback from women who wear Aurelia Studio every day.</p>
+</div>
+</div>
+<div class="reviews-grid">
+<!-- Review 1 -->
+<div class="review-card reveal">
+<div aria-label="5 out of 5 stars" class="review-stars">★★★★★</div>
+<blockquote class="review-text">"The fabric feels premium and the fit is exactly what I was looking for."</blockquote>
+<div class="review-author">
+<div aria-hidden="true" class="review-avatar">EC</div>
+<div class="review-meta">
+<span class="review-name">Emily Carter</span>
+<span class="review-label">Verified Customer</span>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="review-card reveal">
+<div aria-label="5 out of 5 stars" class="review-stars">★★★★★</div>
+<blockquote class="review-text">"Simple, elegant, and easy to style. I wear the linen shirt almost every week."</blockquote>
+<div class="review-author">
+<div aria-hidden="true" class="review-avatar">SL</div>
+<div class="review-meta">
+<span class="review-name">Sofia Lane</span>
+<span class="review-label">Repeat Buyer</span>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="review-card reveal">
+<div aria-label="5 out of 5 stars" class="review-stars">★★★★★</div>
+<blockquote class="review-text">"The shopping experience felt smooth, from browsing to ordering."</blockquote>
+<div class="review-author">
+<div aria-hidden="true" class="review-avatar">MC</div>
+<div class="review-meta">
+<span class="review-name">Maya Collins</span>
+<span class="review-label">Online Customer</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       11. ORDER FLOW
+       ============================================================ -->
+<section class="order-section section-padding" id="order">
+<div class="container">
+<div class="section-header reveal">
+<div>
+<h2 class="section-title">How to Order</h2>
+<p class="section-subtitle">A simple and personal shopping experience — from browsing to delivery.</p>
+</div>
+</div>
+<div class="order-steps reveal">
+<div class="order-step">
+<span class="order-step-number">01</span>
+<h4 class="order-step-title">Choose your favorite item</h4>
+<p class="order-step-desc">Browse the collection and select the pieces you love.</p>
+</div>
+<div class="order-step">
+<span class="order-step-number">02</span>
+<h4 class="order-step-title">Ask for size or styling help</h4>
+<p class="order-step-desc">Chat with us for fit, fabric, or outfit recommendations.</p>
+</div>
+<div class="order-step">
+<span class="order-step-number">03</span>
+<h4 class="order-step-title">Confirm your order through WhatsApp</h4>
+<p class="order-step-desc">Send your selected item, size, and shipping details.</p>
+</div>
+<div class="order-step">
+<span class="order-step-number">04</span>
+<h4 class="order-step-title">Receive payment and shipping details</h4>
+<p class="order-step-desc">We will confirm availability, payment, and delivery information.</p>
+</div>
+</div>
+<div class="order-highlights reveal">
+<span class="order-highlight">🌍 Worldwide shipping concept</span>
+<span class="order-highlight">📏 Size consultation</span>
+<span class="order-highlight">🔒 Secure checkout ready</span>
+<span class="order-highlight">💬 WhatsApp order flow</span>
+</div>
+<div class="order-cta reveal">
+<a class="btn-primary btn-large" href="https://wa.me/6281234567890?text=Hi%20Aurelia%20Studio%2C%20I%20want%20to%20order%20from%20your%20collection.">Order via WhatsApp →</a>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       12. FAQ
+       ============================================================ -->
+<section class="faq-section section-padding" id="faq">
+<div class="container">
+<div class="section-header reveal">
+<div>
+<h2 class="section-title">Frequently Asked Questions</h2>
+<p class="section-subtitle">Everything you need to know about ordering and styling.</p>
+</div>
+</div>
+<div class="faq-list">
+<div class="faq-item reveal">
+<button aria-expanded="false" class="faq-question">
+<span>Do you ship internationally?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-answer" role="region">
+<p>This demo concept is designed to support international fashion brands and can be adapted for worldwide shipping information.</p>
+</div>
+</div>
+<div class="faq-item reveal">
+<button aria-expanded="false" class="faq-question">
+<span>What sizes do you offer?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-answer" role="region">
+<p>Our collection currently includes sizes S, M, and L. Refer to the Size &amp; Fit Guide section for detailed measurements, or chat with us for personalized sizing advice.</p>
+</div>
+</div>
+<div class="faq-item reveal">
+<button aria-expanded="false" class="faq-question">
+<span>How do I place an order?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-answer" role="region">
+<p>Browse the collection, choose your favorite items, and reach out to us via WhatsApp. We will confirm availability, share payment details, and arrange delivery.</p>
+</div>
+</div>
+<div class="faq-item reveal">
+<button aria-expanded="false" class="faq-question">
+<span>What is your return policy?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-answer" role="region">
+<p>We offer exchanges and returns within 14 days of delivery for unworn items in original condition. Contact us via WhatsApp to initiate a return.</p>
+</div>
+</div>
+<div class="faq-item reveal">
+<button aria-expanded="false" class="faq-question">
+<span>Can I get styling advice before ordering?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-answer" role="region">
+<p>Absolutely. We offer personal styling support via WhatsApp. Share your preferences, and we will recommend pieces, sizes, and outfit combinations tailored to your style.</p>
+</div>
+</div>
+<div class="faq-item reveal">
+<button aria-expanded="false" class="faq-question">
+<span>How long does delivery take?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-answer" role="region">
+<p>Delivery typically takes 3–7 business days for domestic orders and 7–14 business days for international shipping, depending on destination.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       13. FINAL CTA
+       ============================================================ -->
+<section class="final-cta">
+<div class="final-cta-bg">
+<img alt="" loading="lazy" src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1920&amp;q=80"/>
+</div>
+<div class="final-cta-overlay"></div>
+<div class="final-cta-content container reveal">
+<h2 class="final-cta-title">Ready to refresh your everyday wardrobe?</h2>
+<p class="final-cta-sub">Explore premium everyday pieces designed to move with your lifestyle.</p>
+<div class="final-cta-buttons">
+<a class="btn-primary" href="/demo/aurelia-studio/collection">Shop Collection</a>
+<a class="btn-secondary" href="https://wa.me/6281234567890?text=Hi%20Aurelia%20Studio">Chat with Stylist</a>
+</div>
+</div>
+</section>
+<!-- ============================================================
+       14. FOOTER
+       ============================================================ -->
+<footer class="site-footer" id="contact">
+<div class="container footer-grid">
+<div class="footer-brand">
+<h3 class="footer-logo">AURELIA STUDIO</h3>
+<p>Premium everyday wear for modern women. Effortless, timeless, and crafted with care.</p>
+</div>
+<div class="footer-links">
+<h4>Explore</h4>
+<ul>
+<li><a href="/demo/aurelia-studio/collection">Collections</a></li>
+<li><a href="#lookbook">Lookbook</a></li>
+<li><a href="#size-guide">Size Guide</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#order">Shipping &amp; Returns</a></li>
+
+<li><a href="#faq">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="footer-newsletter">
+<h4>Join the Studio Notes</h4>
+<p>Receive collection updates and styling inspiration.</p>
+<form class="newsletter-form" onsubmit="return false;">
+<input aria-label="Email address" class="newsletter-input" placeholder="Email address" type="email"/>
+<button class="newsletter-btn" type="submit">Subscribe</button>
+</form>
+</div>
+<div class="footer-contact">
+<h4>Connect</h4>
+<ul>
+<li><a href="mailto:hello@aureliastudio.com">hello@aureliastudio.com</a></li>
+<li><a href="https://wa.me/6281234567890">WhatsApp</a></li>
+<li><a href="#lookbook">Instagram</a></li>
+<li><a href="#lookbook">Pinterest</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom container">
+<p class="footer-disclaimer">Demo concept — not a real fashion store.</p>
+<p>© 2026 Aurelia Studio. All rights reserved.</p>
+</div>
+</footer>
+
+<!-- Product Quick View Modal -->
+<div aria-hidden="true" aria-labelledby="product-modal-title" aria-modal="true" class="modal-overlay product-modal" data-product-modal="" role="dialog">
+<div class="modal-shell product-modal-shell" role="document">
+<button aria-label="Close product details" class="modal-close" data-close-modal="" type="button">×</button>
+<div class="product-modal-grid">
+<div class="product-modal-media">
+<img alt="" data-modal-image="" src=""/>
+<span class="product-modal-badge" data-modal-badge=""></span>
+</div>
+<div class="product-modal-content">
+<p class="modal-kicker">Product Detail</p>
+<h2 class="product-modal-title" data-modal-title="" id="product-modal-title"></h2>
+<p class="product-modal-price" data-modal-price=""></p>
+<p class="product-modal-desc" data-modal-desc=""></p>
+<div class="modal-option-group">
+<div class="modal-option-header">
+<span>Color</span>
+<small data-selected-color=""></small>
+</div>
+<div class="modal-options" data-color-options=""></div>
+</div>
+<div class="modal-option-group">
+<div class="modal-option-header">
+<span>Size</span>
+<small data-selected-size=""></small>
+</div>
+<div class="modal-options" data-size-options=""></div>
+</div>
+<div class="product-modal-notes">
+<div><span>Fabric</span><strong data-modal-fabric=""></strong></div>
+<div><span>Fit</span><strong data-modal-fit=""></strong></div>
+</div>
+<div class="product-modal-actions">
+<a class="btn-primary btn-large" data-modal-whatsapp="" href="#" rel="noopener" target="_blank">Order Now via WhatsApp →</a>
+<button class="btn-secondary" data-close-modal="" type="button">Continue Browsing</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script is:inline src="/fashion/script.js"></script>
+</body>
+</html>

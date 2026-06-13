@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aurelia Studio — Premium Everyday Wear for Modern Women</title>
+<meta content="Discover premium wardrobe essentials designed for comfort, confidence, and timeless daily wear. Effortless everyday style by Aurelia Studio." name="description"/>
+<meta content="Aurelia Studio — Premium Everyday Wear" property="og:title"/>
+<meta content="Modern wardrobe essentials with clean silhouettes, soft textures, and neutral tones." property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="/fashion/style.css" rel="stylesheet"/>
+</head>
+<body class="collection-page-body">
+<!-- ============================================================
+       1. SITE HEADER / NAVBAR
+       ============================================================ -->
+<header class="site-header">
+<nav class="main-nav container">
+<div class="nav-left">
+<a class="nav-link" href="/demo/aurelia-studio/collection">Collections</a>
+<a class="nav-link" href="/demo/aurelia-studio/#lookbook">Lookbook</a>
+</div>
+<div class="nav-center">
+<a class="nav-brand" href="/demo/aurelia-studio/#home">AURELIA STUDIO</a>
+</div>
+<div class="nav-right">
+<a class="nav-link" href="/demo/aurelia-studio/#size-guide">Size Guide</a>
+<a class="nav-link" href="/demo/aurelia-studio/#reviews">Reviews</a>
+</div>
+<button aria-expanded="false" aria-label="Open menu" class="hamburger">
+<span></span><span></span><span></span>
+</button>
+</nav>
+</header>
+<!-- Mobile Menu -->
+<div aria-hidden="true" class="mobile-menu">
+<div class="mobile-menu-header">
+<span class="nav-brand">AURELIA STUDIO</span>
+<button aria-label="Close menu" class="mobile-menu-close">×</button>
+</div>
+<nav class="mobile-menu-links">
+<a href="/demo/aurelia-studio/collection">Collections</a>
+<a href="/demo/aurelia-studio/#lookbook">Lookbook</a>
+<a href="/demo/aurelia-studio/#size-guide">Size Guide</a>
+<a href="/demo/aurelia-studio/#reviews">Reviews</a>
+
+</nav>
+</div>
+
+<main class="collection-page-main">
+  <section class="collection-page-hero">
+    <div class="container collection-page-hero-inner">
+      <p class="modal-kicker">Aurelia Studio</p>
+      <div class="collection-page-heading-row">
+        <div>
+          <h1 class="collection-page-title">All Collection</h1>
+          <p class="collection-page-subtitle">Browse every piece in this demo collection, open the product detail, choose size and color, then order directly through WhatsApp.</p>
+        </div>
+        <a class="collection-page-back" href="/demo/aurelia-studio">← Back to homepage</a>
+      </div>
+      <div aria-label="Filter products" class="collection-filters collection-page-filters" data-collection-filters="">
+        <button class="active" data-filter="All" type="button">All</button>
+        <button data-filter="Tops" type="button">Tops</button>
+        <button data-filter="Bottoms" type="button">Bottoms</button>
+        <button data-filter="Outerwear" type="button">Outerwear</button>
+        <button data-filter="Dresses" type="button">Dresses</button>
+      </div>
+    </div>
+  </section>
+  <section class="collection-page-list">
+    <div class="container">
+      <div class="collection-modal-grid collection-page-grid" data-collection-grid=""></div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer" id="contact">
+<div class="container footer-grid">
+<div class="footer-brand">
+<h3 class="footer-logo">AURELIA STUDIO</h3>
+<p>Premium everyday wear for modern women. Effortless, timeless, and crafted with care.</p>
+</div>
+<div class="footer-links">
+<h4>Explore</h4>
+<ul>
+<li><a href="/demo/aurelia-studio/collection">Collections</a></li>
+<li><a href="/demo/aurelia-studio/#lookbook">Lookbook</a></li>
+<li><a href="/demo/aurelia-studio/#size-guide">Size Guide</a></li>
+<li><a href="/demo/aurelia-studio/#reviews">Reviews</a></li>
+<li><a href="/demo/aurelia-studio/#order">Shipping &amp; Returns</a></li>
+
+<li><a href="#faq">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="footer-newsletter">
+<h4>Join the Studio Notes</h4>
+<p>Receive collection updates and styling inspiration.</p>
+<form class="newsletter-form" onsubmit="return false;">
+<input aria-label="Email address" class="newsletter-input" placeholder="Email address" type="email"/>
+<button class="newsletter-btn" type="submit">Subscribe</button>
+</form>
+</div>
+<div class="footer-contact">
+<h4>Connect</h4>
+<ul>
+<li><a href="mailto:hello@aureliastudio.com">hello@aureliastudio.com</a></li>
+<li><a href="https://wa.me/6281234567890">WhatsApp</a></li>
+<li><a href="/demo/aurelia-studio/#lookbook">Instagram</a></li>
+<li><a href="/demo/aurelia-studio/#lookbook">Pinterest</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom container">
+<p class="footer-disclaimer">Demo concept — not a real fashion store.</p>
+<p>© 2026 Aurelia Studio. All rights reserved.</p>
+</div>
+</footer>
+<!-- Product Quick View Modal -->
+<div aria-hidden="true" aria-labelledby="product-modal-title" aria-modal="true" class="modal-overlay product-modal" data-product-modal="" role="dialog">
+<div class="modal-shell product-modal-shell" role="document">
+<button aria-label="Close product details" class="modal-close" data-close-modal="" type="button">×</button>
+<div class="product-modal-grid">
+<div class="product-modal-media">
+<img alt="" data-modal-image="" src=""/>
+<span class="product-modal-badge" data-modal-badge=""></span>
+</div>
+<div class="product-modal-content">
+<p class="modal-kicker">Product Detail</p>
+<h2 class="product-modal-title" data-modal-title="" id="product-modal-title"></h2>
+<p class="product-modal-price" data-modal-price=""></p>
+<p class="product-modal-desc" data-modal-desc=""></p>
+<div class="modal-option-group">
+<div class="modal-option-header">
+<span>Color</span>
+<small data-selected-color=""></small>
+</div>
+<div class="modal-options" data-color-options=""></div>
+</div>
+<div class="modal-option-group">
+<div class="modal-option-header">
+<span>Size</span>
+<small data-selected-size=""></small>
+</div>
+<div class="modal-options" data-size-options=""></div>
+</div>
+<div class="product-modal-notes">
+<div><span>Fabric</span><strong data-modal-fabric=""></strong></div>
+<div><span>Fit</span><strong data-modal-fit=""></strong></div>
+</div>
+<div class="product-modal-actions">
+<a class="btn-primary btn-large" data-modal-whatsapp="" href="#" rel="noopener" target="_blank">Order Now via WhatsApp →</a>
+<button class="btn-secondary" data-close-modal="" type="button">Continue Browsing</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script is:inline src="/fashion/script.js"></script>
+</body>
+</html>

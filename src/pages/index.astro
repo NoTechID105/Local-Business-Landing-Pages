@@ -1,189 +1,193 @@
 ---
-import Button from '../components/common/Button.astro';
 import Container from '../components/common/Container.astro';
-import SectionHeader from '../components/common/SectionHeader.astro';
-import { demoCategories, demoList } from '../data/demo-list';
+import { demoList } from '../data/demo-list';
 import MainLayout from '../layouts/MainLayout.astro';
 
-const stats = [
-  {
-    value: `${demoList.length}`,
-    label: 'Niche UMKM',
-    description: 'Catering, laundry, dan service AC dalam satu project.',
-  },
-  {
-    value: 'Data',
-    label: 'Driven page',
-    description: 'Konten demo dirender dari data TypeScript.',
-  },
-  {
-    value: 'Static',
-    label: 'Build ringan',
-    description: 'Cocok untuk dipublish sebagai portfolio cepat.',
-  },
-];
-
-const categoryLabels: Record<string, string> = {
-  all: 'Semua',
-  catering: 'Kuliner',
-  laundry: 'Laundry',
-  'service-ac': 'Jasa Panggilan',
+const previewMap: Record<string, string> = {
+  'dapur-bu-rani': '/screenshots/dapur-bu-rani.png',
+  'freshklin-laundry': '/screenshots/cover-freshklin-laundry.png',
+  'sejuk-teknik-ac': '/screenshots/cover-sejuk-teknik-ac.png',
+  'aurelia-studio': 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80',
 };
 
-const categories = demoCategories.map((category) => ({
-  ...category,
-  label: categoryLabels[category.value] ?? category.label,
+const marketMap: Record<string, string> = {
+  'dapur-bu-rani': 'Catering Rumahan',
+  'freshklin-laundry': 'Laundry Lokal',
+  'sejuk-teknik-ac': 'Jasa Service AC',
+  'aurelia-studio': 'Fashion Brand',
+};
+
+const detailMap: Record<string, string> = {
+  'dapur-bu-rani': 'Landing page catering dengan menu paket, harga, testimoni, FAQ, lokasi, dan tombol WhatsApp untuk menerima pesanan acara.',
+  'freshklin-laundry': 'Landing page laundry dengan pricelist, area layanan, alur pickup, FAQ, dan CTA jemput laundry via WhatsApp.',
+  'sejuk-teknik-ac': 'Landing page jasa service AC dengan daftar layanan, harga, garansi, area teknisi, dan booking teknisi via WhatsApp.',
+  'aurelia-studio': 'Landing page fashion berbahasa Inggris dengan hero carousel, collection page, quick view produk, dan order via WhatsApp.',
+};
+
+const challengeMap: Record<string, string> = {
+  'dapur-bu-rani': 'Membuat bisnis makanan rumahan terlihat lebih rapi dan mudah dipercaya tanpa fitur checkout yang rumit.',
+  'freshklin-laundry': 'Menyederhanakan layanan laundry agar pelanggan cepat paham harga, area layanan, dan cara request pickup.',
+  'sejuk-teknik-ac': 'Membangun trust untuk jasa panggilan lewat harga yang jelas, garansi, dan CTA booking yang mudah ditemukan.',
+  'aurelia-studio': 'Membuat contoh landing page produk yang lebih visual, editorial, dan cocok untuk target klien luar.',
+};
+
+const resultMap: Record<string, string> = {
+  'dapur-bu-rani': 'Pengunjung bisa melihat menu, memilih paket, lalu langsung bertanya atau pesan lewat WhatsApp.',
+  'freshklin-laundry': 'Flow order lebih jelas: cek layanan, lihat harga, lalu request jemput laundry lewat WhatsApp.',
+  'sejuk-teknik-ac': 'Calon pelanggan bisa cek keluhan, harga, garansi, lalu booking teknisi tanpa mengisi form panjang.',
+  'aurelia-studio': 'Pengunjung bisa melihat koleksi, membuka detail produk, memilih varian, lalu order lewat WhatsApp.',
+};
+
+const enhancedProjects = demoList.map((demo) => ({
+  ...demo,
+  previewImage: previewMap[demo.slug] ?? '/screenshots/homepage-showcase.png',
+  market: marketMap[demo.slug] ?? 'Local Business',
+  detailDescription: detailMap[demo.slug] ?? demo.shortDescription,
+  challenge: challengeMap[demo.slug] ?? 'Membuat landing page yang terasa realistis dan mudah dipakai ulang.',
+  result: resultMap[demo.slug] ?? 'Landing page responsive dengan CTA yang jelas dan struktur UI yang rapi.',
 }));
 
-const conceptItems = [
+const detailData = enhancedProjects.map((project) => ({
+  slug: project.slug,
+  name: project.name,
+  categoryLabel: project.categoryLabel,
+  market: project.market,
+  projectType: project.projectType,
+  href: project.href,
+  collectionHref: 'collectionHref' in project ? project.collectionHref : undefined,
+  previewImage: project.previewImage,
+  tagline: project.tagline,
+  shortDescription: project.shortDescription,
+  detailDescription: project.detailDescription,
+  challenge: project.challenge,
+  result: project.result,
+  businessFeatures: [...project.businessFeatures],
+  skills: [...project.skills],
+}));
+
+const workflow = [
   {
-    title: 'Konten bisnis terpusat',
-    description: 'Nama usaha, layanan, harga, CTA, warna, FAQ, dan lokasi dikelola lewat data TypeScript.',
+    step: '01',
+    title: 'Pilih contoh yang paling dekat',
+    description: 'Calon klien bisa melihat contoh untuk catering, laundry, jasa service, atau brand produk.',
   },
   {
-    title: 'Satu sistem, banyak karakter',
-    description: 'Layout tetap reusable, tapi warna dan mood tiap niche dibuat berbeda agar tidak terasa template mentah.',
+    step: '02',
+    title: 'Lihat detail dan alur order',
+    description: 'Setiap project menjelaskan fitur utama, alasan desain, dan cara pelanggan diarahkan ke WhatsApp.',
   },
   {
-    title: 'Dynamic route Astro',
-    description: 'Setiap slug bisnis otomatis menjadi halaman demo tanpa perlu membuat file page satu per satu.',
+    step: '03',
+    title: 'Buka live demo',
+    description: 'Demo bisa langsung dibuka sebagai halaman penuh untuk cek tampilan desktop maupun mobile.',
   },
   {
-    title: 'Siap jadi studi kasus',
-    description: 'Project bisa dijelaskan dari sisi UI/UX, data rendering, komponen, SEO dasar, dan alur konversi.',
+    step: '04',
+    title: 'Adaptasi untuk bisnis asli',
+    description: 'Konten, warna, foto, harga, lokasi, dan nomor WhatsApp tinggal diganti sesuai data usaha.',
   },
 ];
 
-const portfolioBenefits = [
-  {
-    title: 'Bisnis lokal',
-    description: 'Menunjukkan kemampuan menerjemahkan kebutuhan UMKM menjadi landing page yang mudah dipahami.',
-  },
-  {
-    title: 'Struktur scalable',
-    description: 'Cukup tambah data bisnis baru untuk membuat demo lain seperti barbershop, toko kue, atau bengkel.',
-  },
-  {
-    title: 'Frontend siap publish',
-    description: 'Responsive, SEO dasar, Open Graph, CTA WhatsApp, routing statis, dan build yang ringan.',
-  },
-];
-
-const demoFeatures = ['WhatsApp CTA', 'Harga', 'Testimoni', 'Maps'];
-const techBadges = ['Static Demo', 'Astro + Tailwind', 'Dynamic Route', 'SEO Ready'];
-const nextIdeas = ['Barbershop', 'Toko kue', 'Bengkel motor', 'Klinik kecantikan'];
-const currentYear = new Date().getFullYear();
+const heroProject = enhancedProjects.find((project) => project.slug === 'dapur-bu-rani') ?? enhancedProjects[0];
 ---
 
 <MainLayout
-  title="UMKM Demo Showcase - Kumpulan Demo Website UMKM"
-  description="Etalase sample project berisi beberapa contoh landing page UMKM berbasis Astro dan Tailwind CSS."
+  title="Local Business Landing Pages - NoTechID Portfolio"
+  description="Portfolio contoh landing page UMKM berbasis Astro. Cocok untuk bisnis lokal yang ingin tampil profesional dan menerima order lewat WhatsApp."
   canonicalUrl="/"
 >
-  <main id="top" class="min-h-screen bg-white text-gray-950">
-    <section class="relative isolate overflow-hidden bg-[#fff8ee] py-16 sm:py-20 lg:py-28">
-      <div aria-hidden="true" class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_22%,rgba(251,146,60,0.18),transparent_32%),radial-gradient(circle_at_88%_10%,rgba(56,189,248,0.16),transparent_30%),linear-gradient(180deg,#fff8ee_0%,#ffffff_100%)]"></div>
-      <div aria-hidden="true" class="absolute right-[-12rem] top-12 -z-10 h-72 w-[42rem] -rotate-6 rounded-full bg-orange-100/80 blur-3xl"></div>
-      <div aria-hidden="true" class="absolute left-[-16rem] bottom-0 -z-10 h-64 w-[36rem] rounded-full bg-sky-100/70 blur-3xl"></div>
+  <main id="top" class="min-h-screen overflow-hidden bg-slate-50 text-slate-950">
+    <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+      <div aria-hidden="true" class="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_18%_12%,rgba(249,115,22,0.22),transparent_32%),radial-gradient(circle_at_82%_20%,rgba(14,165,233,0.20),transparent_31%),linear-gradient(135deg,#020617_0%,#08111f_48%,#0f172a_100%)]"></div>
+      <div aria-hidden="true" class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:72px_72px] opacity-35"></div>
 
-      <Container class="relative">
-        <div class="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <header class="relative z-20 border-b border-white/10 bg-white/[0.03] backdrop-blur-xl">
+        <Container>
+          <nav class="flex h-16 items-center justify-between gap-5">
+            <a href="#top" class="flex items-center gap-3 text-white">
+              <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-sm font-black text-slate-950 shadow-lg shadow-black/20">N</span>
+              <span class="leading-tight">
+                <span class="block text-sm font-black tracking-tight sm:text-base">NoTechID</span>
+                <span class="hidden text-xs font-semibold text-white/55 sm:block">Landing Page Portfolio</span>
+              </span>
+            </a>
+
+            <div class="hidden items-center gap-7 text-sm font-black uppercase tracking-[0.16em] text-white/65 lg:flex">
+              <a href="#project" class="transition hover:text-white">Project</a>
+              <a href="#alur" class="transition hover:text-white">Alur</a>
+            </div>
+
+            <a
+              href="https://notech.my.id"
+              class="hidden rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-black text-white transition hover:bg-white hover:text-slate-950 sm:inline-flex"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Web Portfolio
+            </a>
+          </nav>
+        </Container>
+      </header>
+
+      <Container>
+        <div class="grid gap-10 py-14 lg:min-h-[680px] lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:py-16 xl:py-20">
           <div>
-            <p class="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/85 px-4 py-2 text-base font-semibold text-orange-700 shadow-sm backdrop-blur">
-              <span class="h-2 w-2 rounded-full bg-orange-500"></span>
-              Sample Project · Astro + Tailwind CSS
-            </p>
+            <p class="text-sm font-black uppercase tracking-[0.22em] text-orange-300">Portfolio landing page UMKM</p>
 
-            <h1 class="mt-6 max-w-4xl text-[2.35rem] font-black leading-[1.05] tracking-tight text-gray-950 sm:text-5xl lg:text-7xl">
-              Portfolio landing page UMKM yang terasa seperti bisnis asli.
+            <h1 class="mt-5 max-w-3xl text-[2.35rem] font-black leading-[1.02] tracking-tight text-white sm:text-5xl lg:text-[3.85rem] xl:text-[4.35rem]">
+              Contoh website bisnis yang siap dipakai untuk promosi dan order via WhatsApp.
             </h1>
 
-            <p class="mt-6 max-w-2xl text-base leading-8 text-gray-600 sm:text-xl sm:leading-9">
-              Satu project berisi beberapa contoh website bisnis lokal dengan karakter visual berbeda,
-              data terstruktur, CTA WhatsApp, pricing, testimoni, FAQ, dan lokasi.
+            <p class="mt-6 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
+              Satu codebase berisi beberapa contoh landing page bisnis lokal. Cocok untuk menampilkan menu, layanan, harga, testimoni, lokasi, dan tombol WhatsApp yang mudah diklik calon pelanggan.
             </p>
 
             <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href="#demo" size="lg" class="w-full sm:w-auto">Jelajahi Semua Demo</Button>
-              <Button href="/demo/dapur-bu-rani" variant="outline" size="lg" class="w-full sm:w-auto">
+              <a href="#project" class="inline-flex min-h-12 items-center justify-center rounded-2xl bg-orange-500 px-6 py-3 text-sm font-black text-white shadow-xl shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-orange-600">
+                Lihat Project
+              </a>
+              <a href="/demo/dapur-bu-rani" class="inline-flex min-h-12 items-center justify-center rounded-2xl border border-white/15 bg-white/10 px-6 py-3 text-sm font-black text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:text-slate-950">
                 Buka Demo Catering
-              </Button>
-            </div>
-
-            <div class="mt-8 grid gap-3 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <article class="rounded-2xl border border-white bg-white/80 p-5 shadow-sm backdrop-blur">
-                  <p class="text-2xl font-black text-gray-950">{stat.value}</p>
-                  <p class="mt-1 text-[0.95rem] font-bold uppercase tracking-wide text-gray-500">{stat.label}</p>
-                  <p class="mt-2 text-base leading-7 text-gray-600">{stat.description}</p>
-                </article>
-              ))}
+              </a>
             </div>
           </div>
 
           <div class="relative">
-            <div aria-hidden="true" class="absolute -left-4 top-10 hidden h-24 w-24 rounded-3xl bg-orange-200/70 blur-2xl lg:block"></div>
-            <div aria-hidden="true" class="absolute -right-6 bottom-8 hidden h-28 w-28 rounded-3xl bg-sky-200/80 blur-2xl lg:block"></div>
-
-            <div class="relative rounded-[2rem] border border-white/80 bg-white/85 p-3 shadow-2xl shadow-gray-950/10 backdrop-blur">
-              <div class="overflow-hidden rounded-[1.45rem] border border-gray-200 bg-white">
-                <div class="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-4 py-3">
-                  <div class="flex gap-1.5">
-                    <span class="h-3 w-3 rounded-full bg-red-300"></span>
-                    <span class="h-3 w-3 rounded-full bg-yellow-300"></span>
-                    <span class="h-3 w-3 rounded-full bg-green-300"></span>
-                  </div>
-                  <p class="text-[0.82rem] font-bold uppercase tracking-[0.2em] text-gray-400">Portfolio Preview</p>
+            <div aria-hidden="true" class="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-orange-500/15 to-sky-400/15 blur-2xl"></div>
+            <div class="relative overflow-hidden rounded-[2rem] border border-white/15 bg-slate-900/90 p-3 shadow-2xl shadow-black/30 backdrop-blur">
+              <div class="flex items-center justify-between border-b border-white/10 px-3 py-2">
+                <div class="flex gap-2">
+                  <span class="h-3 w-3 rounded-full bg-red-300"></span>
+                  <span class="h-3 w-3 rounded-full bg-yellow-300"></span>
+                  <span class="h-3 w-3 rounded-full bg-green-300"></span>
                 </div>
+                <p class="text-xs font-black uppercase tracking-[0.24em] text-white/40">Project Preview</p>
+              </div>
 
-                <div class="grid gap-4 p-4 sm:grid-cols-[0.95fr_1.05fr]">
-                  <div class="rounded-2xl bg-gray-950 p-6 text-white">
-                    <p class="text-base font-semibold text-orange-300">Showcase portfolio</p>
-                    <p class="mt-4 text-3xl font-black leading-tight">3 niche UMKM dalam satu codebase.</p>
-                    <p class="mt-4 text-base leading-8 text-gray-300">
-                      Cocok untuk menunjukkan skill UI, data-driven page, routing, reusable component, dan alur CTA.
-                    </p>
-                    <div class="mt-8 grid grid-cols-2 gap-3 text-[0.95rem]">
-                      {techBadges.map((badge) => (
-                        <span class="rounded-xl bg-white/10 px-3 py-2 font-semibold text-gray-200">{badge}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div class="grid gap-3">
-                    {demoList.map((demo, index) => (
-                      <a
-                        href={demo.href}
-                        class="group rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg"
-                      >
-                        <div class="flex items-start justify-between gap-4">
-                          <div>
-                            <p class="text-[0.95rem] font-bold uppercase tracking-wide" style={`color: ${demo.theme.colors.primary};`}>
-                              {demo.categoryLabel}
-                            </p>
-                            <h2 class="mt-1 text-lg font-black text-gray-950">{demo.name}</h2>
-                          </div>
-                          <span
-                            class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl p-1 text-[0.82rem] font-black text-white"
-                            style={`background: ${demo.theme.colors.secondary};`}
-                          >
-                            {demo.logo?.src ? (
-                              <img src={demo.logo.src} alt={demo.logo.alt} class="h-full w-full object-contain" loading="lazy" decoding="async" />
-                            ) : (
-                              demo.logoText || String(index + 1).padStart(2, '0')
-                            )}
-                          </span>
-                        </div>
-                        <div
-                          class="mt-4 h-2 rounded-full"
-                          style={`background: linear-gradient(90deg, ${demo.theme.colors.primary}, ${demo.theme.colors.accent});`}
-                        >
-                        </div>
-                        <p class="mt-3 line-clamp-2 text-base leading-7 text-gray-600">{demo.tagline}</p>
-                      </a>
+              <div class="grid gap-3 p-3 md:grid-cols-[0.88fr_1.12fr]">
+                <div class="rounded-3xl bg-slate-950 p-6">
+                  <p class="text-xs font-black uppercase tracking-[0.22em] text-orange-300">Selected Project</p>
+                  <h2 class="mt-4 text-3xl font-black leading-tight">{heroProject.name}</h2>
+                  <p class="mt-4 text-sm leading-7 text-slate-300">{heroProject.detailDescription}</p>
+                  <div class="mt-5 flex flex-wrap gap-2">
+                    {heroProject.businessFeatures.slice(0, 4).map((feature) => (
+                      <span class="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-bold text-slate-200">{feature}</span>
                     ))}
                   </div>
+                  <div class="mt-6 flex gap-2">
+                    <button type="button" data-detail-open={heroProject.slug} class="rounded-xl bg-white px-4 py-3 text-xs font-black text-slate-950 transition hover:bg-slate-100">Detail</button>
+                    <a href={heroProject.href} class="rounded-xl border border-white/10 px-4 py-3 text-xs font-black text-white transition hover:bg-white hover:text-slate-950">Live Demo</a>
+                  </div>
                 </div>
+
+                <a href={heroProject.href} class="group relative min-h-[360px] overflow-hidden rounded-3xl bg-slate-800">
+                  <img src={heroProject.previewImage} alt={`Preview ${heroProject.name}`} class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="eager" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent"></div>
+                  <div class="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/10 bg-white/10 p-4 text-white backdrop-blur-xl">
+                    <p class="text-xs font-black uppercase tracking-[0.2em] text-orange-200">Klik untuk membuka</p>
+                    <p class="mt-2 text-2xl font-black">Live demo halaman</p>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -191,26 +195,25 @@ const currentYear = new Date().getFullYear();
       </Container>
     </section>
 
-    <section class="bg-white py-16 sm:py-20 lg:py-24">
+    <section id="alur" class="bg-white py-14 sm:py-16 lg:py-20">
       <Container>
-        <div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-          <SectionHeader
-            eyebrow="Konsep project"
-            title="Bukan dashboard demo, tapi etalase portfolio yang punya alur."
-            description="Homepage menjelaskan value project, menampilkan kemampuan teknis, lalu mengarahkan pengunjung memilih contoh website UMKM."
-          />
+        <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div class="lg:sticky lg:top-8">
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-orange-600">Alur project</p>
+            <h2 class="mt-4 max-w-lg text-3xl font-black leading-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Bukan cuma desain cantik, tapi diarahkan sampai pelanggan chat WhatsApp.
+            </h2>
+            <p class="mt-5 max-w-xl text-base leading-8 text-slate-600">
+              Setiap contoh dibuat seperti project klien: ada informasi bisnis, penawaran utama, bukti kepercayaan, dan tombol aksi yang jelas.
+            </p>
+          </div>
 
           <div class="grid gap-4 sm:grid-cols-2">
-            {conceptItems.map((item, index) => (
-              <article class="group rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                <div class="flex items-center justify-between gap-4">
-                  <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-50 text-base font-black text-orange-700">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span class="h-px flex-1 bg-gray-100"></span>
-                </div>
-                <h3 class="mt-5 text-xl font-black text-gray-950">{item.title}</h3>
-                <p class="mt-3 text-base leading-8 text-gray-600">{item.description}</p>
+            {workflow.map((item) => (
+              <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6 shadow-sm shadow-slate-950/5">
+                <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-sm font-black text-orange-700">{item.step}</span>
+                <h3 class="mt-6 text-xl font-black text-slate-950">{item.title}</h3>
+                <p class="mt-3 text-base leading-8 text-slate-600">{item.description}</p>
               </article>
             ))}
           </div>
@@ -218,82 +221,45 @@ const currentYear = new Date().getFullYear();
       </Container>
     </section>
 
-    <section id="demo" class="bg-gray-50 py-16 sm:py-20 lg:py-24">
+    <section id="project" class="bg-slate-50 py-14 sm:py-16 lg:py-20">
       <Container>
-        <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeader
-            eyebrow="Daftar demo"
-            title="Pilih contoh website UMKM"
-            description="Setiap card dibuat seperti preview studi kasus: ada niche, fitur bisnis, badge teknis, dan CTA menuju halaman demo."
-          />
-
-          <div class="flex flex-wrap gap-2 lg:justify-end">
-            {categories.map((category) => (
-              <span class="rounded-full border border-gray-200 bg-white px-4 py-2 text-base font-bold text-gray-700 shadow-sm">
-                {category.label}
-              </span>
-            ))}
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-orange-600">Project showcase</p>
+            <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">Pilih contoh landing page</h2>
+            <p class="mt-4 max-w-2xl text-base leading-8 text-slate-600">Setiap project punya tampilan, niche, fitur, dan tombol live demo. Klik detail untuk membaca konsepnya.</p>
           </div>
         </div>
 
-        <div class="mt-10 grid gap-7 lg:grid-cols-3">
-          {demoList.map((demo) => (
-            <article class="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-950/10">
-              <div class="relative p-5" style={`background: linear-gradient(135deg, ${demo.theme.colors.background}, #ffffff);`}>
-                <div class="absolute right-5 top-5 flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl p-1 text-[0.95rem] font-black text-white shadow-lg shadow-gray-950/10" style={`background: ${demo.theme.colors.secondary};`}>
-                  {demo.logo?.src ? (
-                    <img src={demo.logo.src} alt={demo.logo.alt} class="h-full w-full object-contain" loading="lazy" decoding="async" />
-                  ) : (
-                    demo.logoText
-                  )}
-                </div>
-
-                <div class="rounded-2xl border border-white/80 bg-white/85 p-5 shadow-sm backdrop-blur">
-                  <div class="h-2 w-28 rounded-full" style={`background: linear-gradient(90deg, ${demo.theme.colors.primary}, ${demo.theme.colors.accent});`}></div>
-                  <p class="mt-5 text-[0.95rem] font-black uppercase tracking-wide" style={`color: ${demo.theme.colors.primary};`}>
-                    {demo.categoryLabel}
-                  </p>
-                  <h3 class="mt-2 max-w-[14rem] text-2xl font-black text-gray-950">{demo.name}</h3>
-                  <p class="mt-3 min-h-20 text-base leading-8 text-gray-600">{demo.shortDescription}</p>
-                </div>
-              </div>
-
-              <div class="flex flex-1 flex-col p-6">
-                <div>
-                  <p class="text-[0.95rem] font-bold uppercase tracking-wide text-gray-400">Fitur bisnis</p>
-                  <div class="mt-3 flex flex-wrap gap-2">
-                    {demoFeatures.map((feature) => (
-                      <span class="rounded-full bg-gray-50 px-3 py-1.5 text-[0.95rem] font-semibold text-gray-700">
-                        {feature}
-                      </span>
-                    ))}
+        <div class="mt-9 grid gap-6 lg:grid-cols-2">
+          {enhancedProjects.map((project) => (
+            <article class="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-lg shadow-slate-950/5 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-950/10">
+              <a href={project.href} class="relative block h-64 overflow-hidden bg-slate-200 sm:h-72">
+                <img src={project.previewImage} alt={`Preview ${project.name}`} class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 text-white">
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[0.18em] text-orange-200">{project.market}</p>
+                    <h3 class="mt-2 text-2xl font-black leading-tight">{project.name}</h3>
                   </div>
+                  <span class="rounded-full bg-white px-4 py-2 text-xs font-black text-slate-950">Live Demo</span>
                 </div>
+              </a>
 
-                <div class="mt-6">
-                  <p class="text-[0.95rem] font-bold uppercase tracking-wide text-gray-400">Skill yang ditunjukkan</p>
-                  <div class="mt-3 flex flex-wrap gap-2">
-                    {techBadges.map((badge) => (
-                      <span class="rounded-full border border-gray-200 px-3 py-1.5 text-[0.95rem] font-semibold text-gray-600">
-                        {badge}
-                      </span>
-                    ))}
-                  </div>
+              <div class="p-6">
+                <p class="text-base leading-8 text-slate-600">{project.shortDescription}</p>
+                <div class="mt-5 flex flex-wrap gap-2">
+                  {project.businessFeatures.slice(0, 4).map((feature) => (
+                    <span class="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-bold text-slate-700">{feature}</span>
+                  ))}
                 </div>
-
-                <p class="mt-6 text-base font-bold leading-8 text-gray-800">{demo.tagline}</p>
-
-                <div class="mt-auto flex items-center justify-between gap-4 border-t border-gray-100 pt-6">
-                  <span class="rounded-full bg-gray-50 px-3 py-1.5 text-[0.95rem] font-bold uppercase tracking-wide text-gray-500">
-                    Sample Project
-                  </span>
-                  <a
-                    href={demo.href}
-                    aria-label={`Lihat demo ${demo.name}`}
-                    class="inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-3 text-base font-bold text-white transition hover:-translate-y-0.5 hover:opacity-90"
-                    style={`background: ${demo.theme.colors.primary};`}
-                  >
-                    Lihat Demo
+                <p class="mt-5 text-sm font-black leading-7 text-slate-950">{project.tagline}</p>
+                <div class="mt-6 grid grid-cols-2 gap-3">
+                  <button type="button" data-detail-open={project.slug} class="inline-flex min-h-11 items-center justify-center rounded-2xl border border-slate-200 px-4 py-3 text-sm font-black text-slate-950 transition hover:border-orange-300 hover:text-orange-700">
+                    Detail
+                  </button>
+                  <a href={project.href} class="inline-flex min-h-11 items-center justify-center rounded-2xl bg-slate-950 px-4 py-3 text-sm font-black text-white transition hover:bg-orange-600">
+                    Live Demo
                   </a>
                 </div>
               </div>
@@ -303,90 +269,138 @@ const currentYear = new Date().getFullYear();
       </Container>
     </section>
 
-    <section class="bg-white py-16 sm:py-20 lg:py-24">
+    <footer class="border-t border-slate-200 bg-white py-7">
       <Container>
-        <div class="overflow-hidden rounded-[2rem] border border-gray-200 bg-white shadow-sm">
-          <div class="grid lg:grid-cols-[0.9fr_1.1fr]">
-            <div class="bg-gray-950 p-8 text-white sm:p-10 lg:p-12">
-              <p class="text-[0.95rem] font-bold uppercase tracking-wide text-orange-300">Manfaat portfolio</p>
-              <h2 class="mt-4 text-3xl font-black leading-tight sm:text-4xl">
-                Lebih kuat dari sekadar slicing landing page biasa.
-              </h2>
-              <p class="mt-5 text-base leading-8 text-gray-300 sm:text-lg">
-                Project ini menunjukkan pemahaman desain landing page UMKM, struktur komponen,
-                data-driven rendering, responsive layout, dan alur CTA yang realistis.
-              </p>
-            </div>
-
-            <div class="grid gap-4 bg-gray-50 p-5 sm:p-6 lg:grid-cols-3 lg:p-8">
-              {portfolioBenefits.map((item) => (
-                <article class="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
-                  <h3 class="text-xl font-black text-gray-950">{item.title}</h3>
-                  <p class="mt-3 text-base leading-8 text-gray-600">{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
-
-    <section class="bg-gray-950 py-16 text-white sm:py-20 lg:py-24">
-      <Container>
-        <div class="grid gap-10 rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 shadow-2xl shadow-black/20 sm:p-8 lg:grid-cols-[1fr_0.78fr] lg:items-center lg:p-10">
-          <div>
-            <p class="text-[0.95rem] font-bold uppercase tracking-wide text-orange-300">Demo berikutnya</p>
-            <h2 class="mt-4 max-w-2xl text-3xl font-black leading-tight sm:text-4xl">
-              Siap menambah niche UMKM baru?
-            </h2>
-            <p class="mt-4 max-w-2xl text-base leading-8 text-gray-300 sm:text-lg">
-              Struktur project sudah siap untuk ditambah barbershop, toko kue, bengkel motor,
-              klinik kecantikan, dan bisnis lokal lain tanpa mengulang dari nol.
-            </p>
-
-            <div class="mt-6 flex flex-wrap gap-2">
-              {nextIdeas.map((idea) => (
-                <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-base font-semibold text-gray-200">
-                  {idea}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
-            <p class="text-base font-semibold text-gray-300">Mulai dari demo yang sudah jadi:</p>
-            <div class="mt-4 grid gap-3">
-              <Button href="/demo/dapur-bu-rani" size="lg" class="w-full">Lihat Demo Catering</Button>
-              <Button href="#top" variant="inverted" size="lg" class="w-full">Kembali ke Atas</Button>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
-  </main>
-
-  <footer class="border-t border-gray-200 bg-white py-10">
-    <Container>
-      <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div>
-          <p class="text-xl font-black text-gray-950">UMKM Demo Showcase</p>
-          <p class="mt-2 text-base leading-8 text-gray-600">
-            Sample project for UMKM landing page portfolio. Demo concept — bukan bisnis asli.
+        <div class="flex flex-col gap-3 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © 2026 <span class="font-black text-slate-950">Local Business Landing Pages</span>. Demo concept — bukan bisnis asli.
           </p>
-          <p class="mt-2 text-[0.95rem] text-gray-500">&copy; {currentYear} UMKM Demo Showcase.</p>
+
+          <p>
+            Built by <a href="https://www.notech.my.id/" class="font-black text-slate-950">NoTechID</a>
+          </p>
+        </div>
+      </Container>
+    </footer>
+
+
+  <div data-detail-modal class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/70 p-4 backdrop-blur-sm" aria-hidden="true">
+    <div class="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-black/30">
+      <button type="button" data-detail-close class="absolute right-5 top-5 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-slate-950 text-2xl font-black text-white transition hover:bg-slate-800" aria-label="Tutup detail">×</button>
+      <div class="grid max-h-[90vh] overflow-y-auto lg:grid-cols-[0.92fr_1.08fr]">
+        <div class="relative min-h-[320px] bg-slate-200 lg:min-h-full">
+          <img data-detail-image src="" alt="" class="absolute inset-0 h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-white">
+            <p data-detail-market class="text-sm font-black uppercase tracking-[0.2em] text-orange-200"></p>
+            <h3 data-detail-name-mobile class="mt-3 text-4xl font-black leading-tight"></h3>
+          </div>
         </div>
 
-        <div class="flex flex-wrap gap-3">
-          {demoList.map((demo) => (
-            <a
-              href={demo.href}
-              class="rounded-full border border-gray-200 px-4 py-2 text-base font-bold text-gray-700 transition hover:border-orange-300 hover:text-orange-700"
-            >
-              {demo.name}
-            </a>
-          ))}
+        <div class="p-7 sm:p-10 lg:p-12">
+          <p data-detail-type class="text-sm font-black uppercase tracking-[0.2em] text-orange-600"></p>
+          <h2 data-detail-name class="mt-3 text-4xl font-black leading-tight text-slate-950 sm:text-5xl"></h2>
+          <p data-detail-description class="mt-5 text-lg leading-8 text-slate-600"></p>
+
+          <div class="mt-7 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-3xl border border-slate-200 bg-slate-50 p-5">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Konteks</p>
+              <p data-detail-challenge class="mt-3 text-base leading-7 text-slate-700"></p>
+            </div>
+            <div class="rounded-3xl border border-slate-200 bg-slate-50 p-5">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Hasil</p>
+              <p data-detail-result class="mt-3 text-base leading-7 text-slate-700"></p>
+            </div>
+          </div>
+
+          <div class="mt-7">
+            <p class="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Fitur utama</p>
+            <div data-detail-features class="mt-3 flex flex-wrap gap-2"></div>
+          </div>
+
+          <div class="mt-6">
+            <p class="text-xs font-black uppercase tracking-[0.18em] text-slate-500">Skill yang ditunjukkan</p>
+            <div data-detail-skills class="mt-3 flex flex-wrap gap-2"></div>
+          </div>
+
+          <div class="mt-8 grid gap-3 sm:grid-cols-2">
+            <a data-detail-live href="#" class="inline-flex min-h-12 items-center justify-center rounded-2xl bg-slate-950 px-5 py-3 text-sm font-black text-white transition hover:bg-slate-800">Buka Live Demo</a>
+            <a data-detail-extra href="#" class="hidden min-h-12 items-center justify-center rounded-2xl border border-slate-200 px-5 py-3 text-sm font-black text-slate-950 transition hover:border-slate-400">Buka Collection</a>
+          </div>
         </div>
       </div>
-    </Container>
-  </footer>
+    </div>
+  </div>
+
+  <script define:vars={{ detailData }}>
+    const details = detailData;
+    const bySlug = new Map(details.map((item) => [item.slug, item]));
+    const detailModal = document.querySelector('[data-detail-modal]');
+
+    function setModalVisible(modal, visible) {
+      if (!modal) return;
+      modal.classList.toggle('hidden', !visible);
+      modal.classList.toggle('flex', visible);
+      modal.setAttribute('aria-hidden', visible ? 'false' : 'true');
+      document.documentElement.classList.toggle('overflow-hidden', visible);
+    }
+
+    function fillPills(container, items) {
+      if (!container) return;
+      container.innerHTML = '';
+      items.forEach((item) => {
+        const pill = document.createElement('span');
+        pill.className = 'rounded-full bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700';
+        pill.textContent = item;
+        container.appendChild(pill);
+      });
+    }
+
+    function openDetail(slug) {
+      const item = bySlug.get(slug);
+      if (!item || !detailModal) return;
+
+      detailModal.querySelector('[data-detail-image]').src = item.previewImage;
+      detailModal.querySelector('[data-detail-image]').alt = `Preview ${item.name}`;
+      detailModal.querySelector('[data-detail-market]').textContent = item.market;
+      detailModal.querySelector('[data-detail-name-mobile]').textContent = item.name;
+      detailModal.querySelector('[data-detail-type]').textContent = item.projectType;
+      detailModal.querySelector('[data-detail-name]').textContent = item.name;
+      detailModal.querySelector('[data-detail-description]').textContent = item.detailDescription;
+      detailModal.querySelector('[data-detail-challenge]').textContent = item.challenge;
+      detailModal.querySelector('[data-detail-result]').textContent = item.result;
+      detailModal.querySelector('[data-detail-live]').href = item.href;
+
+      const extra = detailModal.querySelector('[data-detail-extra]');
+      if (item.collectionHref) {
+        extra.href = item.collectionHref;
+        extra.classList.remove('hidden');
+        extra.classList.add('inline-flex');
+      } else {
+        extra.href = '#';
+        extra.classList.add('hidden');
+        extra.classList.remove('inline-flex');
+      }
+
+      fillPills(detailModal.querySelector('[data-detail-features]'), item.businessFeatures);
+      fillPills(detailModal.querySelector('[data-detail-skills]'), item.skills);
+      setModalVisible(detailModal, true);
+    }
+
+    document.querySelectorAll('[data-detail-open]').forEach((trigger) => {
+      trigger.addEventListener('click', () => openDetail(trigger.getAttribute('data-detail-open')));
+    });
+
+    document.querySelectorAll('[data-detail-close]').forEach((trigger) => {
+      trigger.addEventListener('click', () => setModalVisible(detailModal, false));
+    });
+
+    detailModal?.addEventListener('click', (event) => {
+      if (event.target === detailModal) setModalVisible(detailModal, false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setModalVisible(detailModal, false);
+    });
+  </script>
 </MainLayout>
