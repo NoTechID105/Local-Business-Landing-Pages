@@ -1,71 +1,114 @@
 # Local Business Landing Pages
 
-## Deskripsi Project
+Astro + Tailwind CSS landing page portfolio for local business and UMKM website demos.
 
-Local Business Landing Pages adalah project Astro berisi kumpulan dummy landing page untuk berbagai bisnis UMKM seperti catering, laundry, dan service AC. Project ini dibuat sebagai portfolio untuk menunjukkan kemampuan membangun website bisnis lokal yang responsive, ringan, SEO-friendly, dan berbasis komponen reusable.
+![Homepage Showcase](public/screenshots/homepage-showcase.png)
 
-Project ini bukan website jasa pribadi, bukan marketplace, dan bukan aplikasi transaksi. Fokus utamanya adalah menampilkan contoh landing page bisnis lokal yang bisa dikembangkan menjadi banyak niche UMKM.
+## Overview
 
-## Tujuan Project
+**Local Business Landing Pages** adalah project portfolio berbasis Astro yang berisi beberapa contoh landing page untuk bisnis lokal atau UMKM.
 
-Tujuan utama project ini adalah membuat satu codebase Astro yang bisa menampilkan beberapa demo website UMKM secara rapi dan scalable.
+Project ini dibuat untuk menunjukkan bagaimana satu codebase dapat digunakan untuk membuat beberapa landing page bisnis dengan tampilan, warna, konten, CTA, dan karakter visual yang berbeda.
 
-Project ini menunjukkan beberapa kemampuan penting dalam pengembangan frontend:
+Demo yang tersedia saat ini:
 
-- Membuat landing page bisnis lokal yang modern dan responsive.
-- Menggunakan dynamic route Astro untuk membuat banyak halaman dari data.
-- Memisahkan konten bisnis ke file TypeScript agar mudah dikelola.
-- Membuat komponen reusable untuk section umum landing page.
-- Menambahkan CTA WhatsApp, SEO dasar, Open Graph meta tag, navbar mobile, dan FAQ accordion.
-- Menyiapkan struktur project yang mudah dipahami pemula dan tetap layak dipajang di portfolio.
+* Dapur Bu Rani — Catering Landing Page
+* FreshKlin Laundry — Laundry Service Landing Page
+* Sejuk Teknik AC — AC Service Landing Page
 
-## Demo Website
+> Demo concept — bukan bisnis asli. Semua nama bisnis, alamat, harga, nomor WhatsApp, testimoni, dan data layanan adalah data dummy untuk kebutuhan portfolio.
 
-Route yang tersedia:
+---
+
+## Live Demo
+
+Main showcase:
 
 ```txt
-/                         -> Homepage etalase demo
-/demo/dapur-bu-rani        -> Demo landing page catering
-/demo/freshklin-laundry    -> Demo landing page laundry
-/demo/sejuk-teknik-ac      -> Demo landing page service AC
+https://umkm.notech.my.id
 ```
 
-Daftar demo:
+Demo pages:
 
-| Demo | Jenis Bisnis | Route |
-| --- | --- | --- |
-| Dapur Bu Rani | Catering, nasi box, snack box, tumpeng mini | `/demo/dapur-bu-rani` |
+```txt
+https://umkm.notech.my.id/demo/dapur-bu-rani
+https://umkm.notech.my.id/demo/freshklin-laundry
+https://umkm.notech.my.id/demo/sejuk-teknik-ac
+```
+
+---
+
+## Screenshots
+
+| Homepage Showcase                                              | Catering Landing Page                                  |
+| -------------------------------------------------------------- | ------------------------------------------------------ |
+| ![Homepage Showcase](public/screenshots/homepage-showcase.png) | ![Dapur Bu Rani](public/screenshots/dapur-bu-rani.png) |
+
+| Laundry Landing Page                                                 | AC Service Landing Page                                          |
+| -------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| ![FreshKlin Laundry](public/screenshots/cover-freshklin-laundry.png) | ![Sejuk Teknik AC](public/screenshots/cover-sejuk-teknik-ac.png) |
+
+---
+
+## Project Goals
+
+Tujuan utama project ini adalah membuat **landing page portfolio UMKM yang terlihat seperti bisnis asli**, bukan sekadar template kosong.
+
+Project ini menunjukkan beberapa kemampuan frontend seperti:
+
+* Membuat landing page bisnis lokal yang modern dan responsive.
+* Menggunakan Astro dynamic route untuk membuat banyak halaman dari data.
+* Memisahkan konten bisnis ke file TypeScript agar mudah dikelola.
+* Membuat komponen reusable untuk section landing page.
+* Menambahkan CTA WhatsApp yang relevan untuk bisnis lokal.
+* Menyiapkan SEO dasar, Open Graph meta tag, dan struktur halaman yang rapi.
+* Membangun static website yang ringan dan mudah dideploy.
+
+---
+
+## Demo Pages
+
+| Demo              | Business Type                                            | Live URL                  |
+| ----------------- | -------------------------------------------------------- | ------------------------- |
+| Dapur Bu Rani     | Catering, nasi box, snack box, tumpeng mini              | `/demo/dapur-bu-rani`     |
 | FreshKlin Laundry | Laundry kiloan, express, setrika, bed cover, cuci sepatu | `/demo/freshklin-laundry` |
-| Sejuk Teknik AC | Service AC, cuci AC, isi freon, bongkar pasang AC | `/demo/sejuk-teknik-ac` |
+| Sejuk Teknik AC   | Service AC, cuci AC, isi freon, bongkar pasang AC        | `/demo/sejuk-teknik-ac`   |
 
-## Fitur Utama
+---
 
-- Homepage etalase demo.
-- Dynamic route Astro dengan `/demo/[slug]`.
-- Data bisnis dari file TypeScript.
-- Reusable components untuk layout, navbar, footer, button, dan section.
-- Responsive design untuk mobile, tablet, dan desktop.
-- CTA WhatsApp pada hero, pricing, final CTA, dan floating button.
-- SEO dasar dengan title dan meta description.
-- Open Graph meta tag dan Twitter Card.
-- Navbar mobile dengan toggle sederhana.
-- FAQ accordion menggunakan vanilla JavaScript.
-- Floating WhatsApp button.
-- Fallback image placeholder agar tampilan tetap rapi jika gambar gagal dimuat.
-- Static Site Generation sehingga ringan dan cocok untuk deploy ke hosting modern.
+## Key Features
+
+* Homepage showcase untuk daftar demo UMKM.
+* Dynamic route Astro dengan `/demo/[slug]`.
+* Data-driven rendering dari file TypeScript.
+* Reusable components untuk layout, navbar, footer, button, dan section.
+* Responsive design untuk mobile, tablet, dan desktop.
+* Hero section dengan CTA utama.
+* Layanan dan paket harga.
+* Gallery section.
+* Testimonial section.
+* FAQ accordion dengan vanilla JavaScript.
+* Location section dengan Google Maps embed.
+* Floating WhatsApp button.
+* SEO dasar dengan title dan meta description.
+* Open Graph meta tag dan Twitter Card.
+* Static Site Generation sehingga ringan untuk production.
+
+---
 
 ## Tech Stack
 
-- Astro
-- Tailwind CSS
-- TypeScript
-- Static Site Generation
-- Reusable Component
-- Data-driven Rendering
+* Astro
+* Tailwind CSS
+* TypeScript
+* Static Site Generation
+* Vercel
+* GitHub
+* Google Maps Embed
 
-## Struktur Folder
+---
 
-Struktur utama project:
+## Project Structure
 
 ```txt
 src/
@@ -115,7 +158,29 @@ src/
     `-- getBusinessBySlug.ts
 ```
 
-## Cara Menjalankan Project
+---
+
+## How It Works
+
+Alur render halaman demo:
+
+```txt
+User membuka /demo/dapur-bu-rani
+        ↓
+Astro membaca slug dari dynamic route
+        ↓
+Data bisnis diambil dari src/data/businesses
+        ↓
+Halaman dirender menggunakan reusable sections
+        ↓
+User melihat layanan, harga, testimoni, lokasi, dan CTA WhatsApp
+```
+
+Dengan pendekatan ini, demo bisnis baru bisa ditambahkan tanpa membuat ulang semua komponen dari awal. Cukup membuat file data bisnis baru, lalu mendaftarkannya ke daftar demo.
+
+---
+
+## Getting Started
 
 Install dependencies:
 
@@ -123,162 +188,130 @@ Install dependencies:
 npm install
 ```
 
-Jalankan development server:
+Run development server:
 
 ```bash
 npm run dev
 ```
 
-Buka di browser:
+Open in browser:
 
 ```txt
-http://localhost:4321/
+http://localhost:4321
 ```
 
-Jika di Windows PowerShell perintah `npm` bermasalah, gunakan:
+For Windows PowerShell, you can also use:
 
 ```bash
 npm.cmd install
 npm.cmd run dev
 ```
 
-## Cara Build
+---
 
-Build project untuk production:
+## Build
+
+Build for production:
 
 ```bash
 npm run build
 ```
 
-Preview hasil build:
+Preview production build:
 
 ```bash
 npm run preview
 ```
 
-Jika di Windows PowerShell bermasalah, gunakan:
+For Windows PowerShell:
 
 ```bash
 npm.cmd run build
 npm.cmd run preview
 ```
 
-## Data Dummy
+---
 
-Semua konten bisnis pada project ini adalah data dummy untuk kebutuhan portfolio.
+## Deployment
 
-Data bisnis disimpan di folder:
+This project is deployed on Vercel.
+
+Recommended Vercel settings:
+
+```txt
+Framework Preset : Astro
+Build Command    : npm run build
+Output Directory : dist
+Install Command  : npm ci --no-audit --no-fund
+```
+
+The project can also be deployed to Netlify or any static hosting provider.
+
+Netlify settings:
+
+```txt
+Build Command     : npm run build
+Publish Directory : dist
+```
+
+---
+
+## Data Management
+
+All business content is stored inside:
 
 ```txt
 src/data/businesses/
 ```
 
-File utama daftar demo:
+Each business data file contains content such as:
 
-```txt
-src/data/demo-list.ts
-```
+* Business profile
+* Hero content
+* Customer problems
+* Services
+* Pricing packages
+* Features
+* Gallery
+* Testimonials
+* Order steps
+* FAQ
+* Location and service area
+* Final CTA
+* SEO metadata
 
-Dengan pendekatan ini, halaman demo baru bisa ditambahkan dengan membuat file data bisnis baru, lalu mendaftarkannya ke `demo-list.ts`.
+This makes the project easier to scale when adding more demo niches.
 
-Contoh jenis data yang tersedia:
+---
 
-- Profil bisnis.
-- Hero section.
-- Problem pelanggan.
-- Layanan.
-- Paket harga.
-- Keunggulan.
-- Galeri.
-- Testimoni.
-- Cara order.
-- FAQ.
-- Lokasi dan area layanan.
-- Final CTA.
-- SEO title dan description.
+## Current Demo Niches
 
-## Screenshot / Preview
+* Catering landing page
+* Laundry service landing page
+* AC service landing page
 
-Preview yang disarankan untuk portfolio:
+---
 
-```txt
-Homepage:
-http://localhost:4321/
+## Future Improvements
 
-Demo Catering:
-http://localhost:4321/demo/dapur-bu-rani
+* Add more demo niches such as barbershop, bakery, florist, beauty clinic, motorcycle repair shop, and coffee shop.
+* Add homepage category filter.
+* Add small animation or transition effects.
+* Add a short case study section for each demo.
+* Improve image assets using local optimized images.
+* Add Lighthouse performance screenshot to the README.
+* Add more realistic business copywriting for each niche.
 
-Demo Laundry:
-http://localhost:4321/demo/freshklin-laundry
+---
 
-Demo Service AC:
-http://localhost:4321/demo/sejuk-teknik-ac
-```
+## Disclaimer
 
-Screenshot dapat ditambahkan nanti ke folder `public/` atau langsung ke dokumentasi GitHub setelah project dideploy.
+This is a sample portfolio project.
 
-## Catatan
+All business names, prices, addresses, testimonials, phone numbers, and service details are fictional and used only for demo purposes.
 
-- Project ini adalah dummy portfolio, bukan bisnis asli.
-- Nomor WhatsApp, alamat, testimoni, harga, dan data layanan adalah data contoh.
-- Project tidak menggunakan database, login, admin panel, payment gateway, atau CMS.
-- Gambar menggunakan URL eksternal dan sudah disiapkan fallback visual agar layout tetap rapi jika gambar gagal dimuat.
-- Cocok dideploy sebagai static website ke Vercel atau Netlify.
+---
 
-## Rencana Pengembangan
+## License
 
-Beberapa pengembangan yang bisa dilakukan berikutnya:
-
-- Menambahkan demo baru untuk barbershop, toko kue, bengkel motor, klinik kecantikan, florist, dan bisnis lokal lainnya.
-- Menambahkan screenshot preview untuk setiap demo.
-- Menambahkan filter kategori interaktif di homepage.
-- Menambahkan animasi ringan untuk transisi section.
-- Menambahkan mode data yang lebih modular jika jumlah demo semakin banyak.
-- Menambahkan halaman studi kasus singkat untuk menjelaskan proses desain dan development.
-
-## Checklist Sebelum Deploy
-
-Gunakan checklist berikut sebelum publish:
-
-```txt
-[ ] npm run build berhasil
-[ ] npm run preview berhasil
-[ ] Semua link demo bisa dibuka
-[ ] Tampilan mobile aman
-[ ] CTA WhatsApp aman
-[ ] SEO title dan description aman
-[ ] Open Graph meta tag aman
-[ ] README sudah lengkap
-[ ] Repository GitHub sudah rapi
-[ ] Deploy ke Vercel atau Netlify
-```
-
-## Rekomendasi Deploy
-
-Project ini dapat dideploy ke platform static hosting seperti Vercel atau Netlify.
-
-### Vercel
-
-Cocok jika ingin deploy cepat dari GitHub.
-
-Pengaturan umum:
-
-```txt
-Framework Preset: Astro
-Build Command: npm run build
-Output Directory: dist
-Install Command: npm install
-```
-
-### Netlify
-
-Cocok untuk static site dan preview deploy.
-
-Pengaturan umum:
-
-```txt
-Build Command: npm run build
-Publish Directory: dist
-```
-
-Keduanya cocok untuk project ini karena Astro menghasilkan static output di folder `dist`.
+This project is licensed under the MIT License.
