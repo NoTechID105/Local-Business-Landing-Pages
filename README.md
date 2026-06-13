@@ -1,8 +1,8 @@
-# UMKM Demo Showcase
+# Local Business Landing Pages
 
 ## Deskripsi Project
 
-UMKM Demo Showcase adalah project Astro berisi kumpulan dummy landing page untuk berbagai bisnis UMKM seperti catering, laundry, dan service AC. Project ini dibuat sebagai portfolio untuk menunjukkan kemampuan membangun website bisnis lokal yang responsive, ringan, SEO-friendly, dan berbasis komponen reusable.
+Local Business Landing Pages adalah project Astro berisi kumpulan dummy landing page untuk berbagai bisnis UMKM seperti catering, laundry, dan service AC. Project ini dibuat sebagai portfolio untuk menunjukkan kemampuan membangun website bisnis lokal yang responsive, ringan, SEO-friendly, dan berbasis komponen reusable.
 
 Project ini bukan website jasa pribadi, bukan marketplace, dan bukan aplikasi transaksi. Fokus utamanya adalah menampilkan contoh landing page bisnis lokal yang bisa dikembangkan menjadi banyak niche UMKM.
 
