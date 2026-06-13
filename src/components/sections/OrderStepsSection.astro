@@ -1,0 +1,49 @@
+---
+import Button from '../common/Button.astro';
+import Container from '../common/Container.astro';
+import SectionHeader from '../common/SectionHeader.astro';
+import type { OrderStep } from '../../data/businesses/types';
+
+interface Props {
+  steps: OrderStep[];
+  whatsappUrl: string;
+}
+
+const { steps, whatsappUrl } = Astro.props;
+---
+
+{
+  steps.length > 0 && (
+    <section id="order" class="bg-white py-16 sm:py-20 lg:py-24">
+      <Container>
+        <div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+          <div class="rounded-3xl bg-[var(--theme-background,#fff7ed)] p-7">
+            <SectionHeader
+              eyebrow="Cara Order"
+              title="Cara Order"
+              description="Alur order dibuat sederhana agar pelanggan tahu langkah berikutnya tanpa merasa dipaksa."
+            />
+            <Button href={whatsappUrl} class="mt-8 w-full sm:w-auto" ariaLabel="Mulai order via WhatsApp">
+              Mulai Order via WhatsApp
+            </Button>
+          </div>
+
+          <div class="relative">
+            <div class="absolute left-5 top-5 hidden h-[calc(100%-2.5rem)] w-px bg-gray-200 sm:block"></div>
+            <div class="space-y-4">
+              {steps.map((step) => (
+                <article class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:ml-12">
+                  <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-[var(--theme-primary,#ea580c)] text-[0.95rem] font-bold text-white sm:absolute sm:-left-16 sm:top-5">
+                    {step.step}
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-950">{step.title}</h3>
+                  <p class="mt-2 text-base leading-8 text-gray-600">{step.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  )
+}

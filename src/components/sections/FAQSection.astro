@@ -1,0 +1,95 @@
+---
+import Container from '../common/Container.astro';
+import SectionHeader from '../common/SectionHeader.astro';
+import type { FaqItem } from '../../data/businesses/types';
+
+interface Props {
+  faqs: FaqItem[];
+}
+
+const { faqs } = Astro.props;
+---
+
+{
+  faqs.length > 0 && (
+    <section id="faq" class="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+      <Container>
+        <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <SectionHeader
+              eyebrow="FAQ"
+              title="Pertanyaan yang Sering Diajukan"
+              description="Jawaban singkat untuk membantu pelanggan mengambil keputusan sebelum menghubungi WhatsApp."
+            />
+
+            <div class="mt-8 rounded-3xl bg-[var(--theme-background,#fff7ed)] p-6">
+              <p class="text-base font-semibold text-gray-950">Butuh jawaban cepat?</p>
+              <p class="mt-2 text-base leading-8 text-gray-600">
+                Jika pertanyaan belum ada di daftar, pelanggan bisa langsung konsultasi lewat CTA WhatsApp.
+              </p>
+            </div>
+          </div>
+
+          <div data-faq-root class="space-y-3">
+            {faqs.map((faq, index) => {
+              const answerId = `faq-answer-${index}`;
+
+              return (
+                <article class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                  <button
+                    type="button"
+                    data-faq-button
+                    aria-expanded="false"
+                    aria-controls={answerId}
+                    class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-gray-50"
+                  >
+                    <span class="flex items-start gap-3">
+                      <span class="mt-0.5 text-[0.95rem] font-bold text-[var(--theme-primary,#ea580c)]">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span class="text-base font-semibold leading-7 text-gray-950">{faq.question}</span>
+                    </span>
+                    <span data-faq-icon aria-hidden="true" class="text-xl leading-none text-gray-500">
+                      +
+                    </span>
+                  </button>
+                  <div id={answerId} data-faq-panel hidden class="border-t border-gray-100 px-5 py-5 text-base leading-8 text-gray-600">
+                    {faq.answer}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </Container>
+    </section>
+  )
+}
+
+<script>
+  document.querySelectorAll('[data-faq-root]').forEach((root) => {
+    root.querySelectorAll('[data-faq-button]').forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      const panelId = button.getAttribute('aria-controls');
+      const panel = panelId ? document.getElementById(panelId) : null;
+      const icon = button.querySelector('[data-faq-icon]');
+
+      if (!(panel instanceof HTMLElement)) {
+        return;
+      }
+
+      button.addEventListener('click', () => {
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!isOpen));
+        panel.hidden = isOpen;
+
+        if (icon) {
+          icon.textContent = isOpen ? '+' : '-';
+        }
+      });
+    });
+  });
+</script>

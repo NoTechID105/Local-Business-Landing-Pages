@@ -1,0 +1,392 @@
+---
+import Button from '../components/common/Button.astro';
+import Container from '../components/common/Container.astro';
+import SectionHeader from '../components/common/SectionHeader.astro';
+import { demoCategories, demoList } from '../data/demo-list';
+import MainLayout from '../layouts/MainLayout.astro';
+
+const stats = [
+  {
+    value: `${demoList.length}`,
+    label: 'Niche UMKM',
+    description: 'Catering, laundry, dan service AC dalam satu project.',
+  },
+  {
+    value: 'Data',
+    label: 'Driven page',
+    description: 'Konten demo dirender dari data TypeScript.',
+  },
+  {
+    value: 'Static',
+    label: 'Build ringan',
+    description: 'Cocok untuk dipublish sebagai portfolio cepat.',
+  },
+];
+
+const categoryLabels: Record<string, string> = {
+  all: 'Semua',
+  catering: 'Kuliner',
+  laundry: 'Laundry',
+  'service-ac': 'Jasa Panggilan',
+};
+
+const categories = demoCategories.map((category) => ({
+  ...category,
+  label: categoryLabels[category.value] ?? category.label,
+}));
+
+const conceptItems = [
+  {
+    title: 'Konten bisnis terpusat',
+    description: 'Nama usaha, layanan, harga, CTA, warna, FAQ, dan lokasi dikelola lewat data TypeScript.',
+  },
+  {
+    title: 'Satu sistem, banyak karakter',
+    description: 'Layout tetap reusable, tapi warna dan mood tiap niche dibuat berbeda agar tidak terasa template mentah.',
+  },
+  {
+    title: 'Dynamic route Astro',
+    description: 'Setiap slug bisnis otomatis menjadi halaman demo tanpa perlu membuat file page satu per satu.',
+  },
+  {
+    title: 'Siap jadi studi kasus',
+    description: 'Project bisa dijelaskan dari sisi UI/UX, data rendering, komponen, SEO dasar, dan alur konversi.',
+  },
+];
+
+const portfolioBenefits = [
+  {
+    title: 'Bisnis lokal',
+    description: 'Menunjukkan kemampuan menerjemahkan kebutuhan UMKM menjadi landing page yang mudah dipahami.',
+  },
+  {
+    title: 'Struktur scalable',
+    description: 'Cukup tambah data bisnis baru untuk membuat demo lain seperti barbershop, toko kue, atau bengkel.',
+  },
+  {
+    title: 'Frontend siap publish',
+    description: 'Responsive, SEO dasar, Open Graph, CTA WhatsApp, routing statis, dan build yang ringan.',
+  },
+];
+
+const demoFeatures = ['WhatsApp CTA', 'Harga', 'Testimoni', 'Maps'];
+const techBadges = ['Static Demo', 'Astro + Tailwind', 'Dynamic Route', 'SEO Ready'];
+const nextIdeas = ['Barbershop', 'Toko kue', 'Bengkel motor', 'Klinik kecantikan'];
+const currentYear = new Date().getFullYear();
+---
+
+<MainLayout
+  title="UMKM Demo Showcase - Kumpulan Demo Website UMKM"
+  description="Etalase sample project berisi beberapa contoh landing page UMKM berbasis Astro dan Tailwind CSS."
+  canonicalUrl="/"
+>
+  <main id="top" class="min-h-screen bg-white text-gray-950">
+    <section class="relative isolate overflow-hidden bg-[#fff8ee] py-16 sm:py-20 lg:py-28">
+      <div aria-hidden="true" class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_22%,rgba(251,146,60,0.18),transparent_32%),radial-gradient(circle_at_88%_10%,rgba(56,189,248,0.16),transparent_30%),linear-gradient(180deg,#fff8ee_0%,#ffffff_100%)]"></div>
+      <div aria-hidden="true" class="absolute right-[-12rem] top-12 -z-10 h-72 w-[42rem] -rotate-6 rounded-full bg-orange-100/80 blur-3xl"></div>
+      <div aria-hidden="true" class="absolute left-[-16rem] bottom-0 -z-10 h-64 w-[36rem] rounded-full bg-sky-100/70 blur-3xl"></div>
+
+      <Container class="relative">
+        <div class="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div>
+            <p class="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/85 px-4 py-2 text-base font-semibold text-orange-700 shadow-sm backdrop-blur">
+              <span class="h-2 w-2 rounded-full bg-orange-500"></span>
+              Sample Project · Astro + Tailwind CSS
+            </p>
+
+            <h1 class="mt-6 max-w-4xl text-[2.35rem] font-black leading-[1.05] tracking-tight text-gray-950 sm:text-5xl lg:text-7xl">
+              Portfolio landing page UMKM yang terasa seperti bisnis asli.
+            </h1>
+
+            <p class="mt-6 max-w-2xl text-base leading-8 text-gray-600 sm:text-xl sm:leading-9">
+              Satu project berisi beberapa contoh website bisnis lokal dengan karakter visual berbeda,
+              data terstruktur, CTA WhatsApp, pricing, testimoni, FAQ, dan lokasi.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button href="#demo" size="lg" class="w-full sm:w-auto">Jelajahi Semua Demo</Button>
+              <Button href="/demo/dapur-bu-rani" variant="outline" size="lg" class="w-full sm:w-auto">
+                Buka Demo Catering
+              </Button>
+            </div>
+
+            <div class="mt-8 grid gap-3 sm:grid-cols-3">
+              {stats.map((stat) => (
+                <article class="rounded-2xl border border-white bg-white/80 p-5 shadow-sm backdrop-blur">
+                  <p class="text-2xl font-black text-gray-950">{stat.value}</p>
+                  <p class="mt-1 text-[0.95rem] font-bold uppercase tracking-wide text-gray-500">{stat.label}</p>
+                  <p class="mt-2 text-base leading-7 text-gray-600">{stat.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div class="relative">
+            <div aria-hidden="true" class="absolute -left-4 top-10 hidden h-24 w-24 rounded-3xl bg-orange-200/70 blur-2xl lg:block"></div>
+            <div aria-hidden="true" class="absolute -right-6 bottom-8 hidden h-28 w-28 rounded-3xl bg-sky-200/80 blur-2xl lg:block"></div>
+
+            <div class="relative rounded-[2rem] border border-white/80 bg-white/85 p-3 shadow-2xl shadow-gray-950/10 backdrop-blur">
+              <div class="overflow-hidden rounded-[1.45rem] border border-gray-200 bg-white">
+                <div class="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-4 py-3">
+                  <div class="flex gap-1.5">
+                    <span class="h-3 w-3 rounded-full bg-red-300"></span>
+                    <span class="h-3 w-3 rounded-full bg-yellow-300"></span>
+                    <span class="h-3 w-3 rounded-full bg-green-300"></span>
+                  </div>
+                  <p class="text-[0.82rem] font-bold uppercase tracking-[0.2em] text-gray-400">Portfolio Preview</p>
+                </div>
+
+                <div class="grid gap-4 p-4 sm:grid-cols-[0.95fr_1.05fr]">
+                  <div class="rounded-2xl bg-gray-950 p-6 text-white">
+                    <p class="text-base font-semibold text-orange-300">Showcase portfolio</p>
+                    <p class="mt-4 text-3xl font-black leading-tight">3 niche UMKM dalam satu codebase.</p>
+                    <p class="mt-4 text-base leading-8 text-gray-300">
+                      Cocok untuk menunjukkan skill UI, data-driven page, routing, reusable component, dan alur CTA.
+                    </p>
+                    <div class="mt-8 grid grid-cols-2 gap-3 text-[0.95rem]">
+                      {techBadges.map((badge) => (
+                        <span class="rounded-xl bg-white/10 px-3 py-2 font-semibold text-gray-200">{badge}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div class="grid gap-3">
+                    {demoList.map((demo, index) => (
+                      <a
+                        href={demo.href}
+                        class="group rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-gray-300 hover:shadow-lg"
+                      >
+                        <div class="flex items-start justify-between gap-4">
+                          <div>
+                            <p class="text-[0.95rem] font-bold uppercase tracking-wide" style={`color: ${demo.theme.colors.primary};`}>
+                              {demo.categoryLabel}
+                            </p>
+                            <h2 class="mt-1 text-lg font-black text-gray-950">{demo.name}</h2>
+                          </div>
+                          <span
+                            class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl p-1 text-[0.82rem] font-black text-white"
+                            style={`background: ${demo.theme.colors.secondary};`}
+                          >
+                            {demo.logo?.src ? (
+                              <img src={demo.logo.src} alt={demo.logo.alt} class="h-full w-full object-contain" loading="lazy" decoding="async" />
+                            ) : (
+                              demo.logoText || String(index + 1).padStart(2, '0')
+                            )}
+                          </span>
+                        </div>
+                        <div
+                          class="mt-4 h-2 rounded-full"
+                          style={`background: linear-gradient(90deg, ${demo.theme.colors.primary}, ${demo.theme.colors.accent});`}
+                        >
+                        </div>
+                        <p class="mt-3 line-clamp-2 text-base leading-7 text-gray-600">{demo.tagline}</p>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <section class="bg-white py-16 sm:py-20 lg:py-24">
+      <Container>
+        <div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+          <SectionHeader
+            eyebrow="Konsep project"
+            title="Bukan dashboard demo, tapi etalase portfolio yang punya alur."
+            description="Homepage menjelaskan value project, menampilkan kemampuan teknis, lalu mengarahkan pengunjung memilih contoh website UMKM."
+          />
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            {conceptItems.map((item, index) => (
+              <article class="group rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                <div class="flex items-center justify-between gap-4">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-50 text-base font-black text-orange-700">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span class="h-px flex-1 bg-gray-100"></span>
+                </div>
+                <h3 class="mt-5 text-xl font-black text-gray-950">{item.title}</h3>
+                <p class="mt-3 text-base leading-8 text-gray-600">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <section id="demo" class="bg-gray-50 py-16 sm:py-20 lg:py-24">
+      <Container>
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <SectionHeader
+            eyebrow="Daftar demo"
+            title="Pilih contoh website UMKM"
+            description="Setiap card dibuat seperti preview studi kasus: ada niche, fitur bisnis, badge teknis, dan CTA menuju halaman demo."
+          />
+
+          <div class="flex flex-wrap gap-2 lg:justify-end">
+            {categories.map((category) => (
+              <span class="rounded-full border border-gray-200 bg-white px-4 py-2 text-base font-bold text-gray-700 shadow-sm">
+                {category.label}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-10 grid gap-7 lg:grid-cols-3">
+          {demoList.map((demo) => (
+            <article class="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-950/10">
+              <div class="relative p-5" style={`background: linear-gradient(135deg, ${demo.theme.colors.background}, #ffffff);`}>
+                <div class="absolute right-5 top-5 flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl p-1 text-[0.95rem] font-black text-white shadow-lg shadow-gray-950/10" style={`background: ${demo.theme.colors.secondary};`}>
+                  {demo.logo?.src ? (
+                    <img src={demo.logo.src} alt={demo.logo.alt} class="h-full w-full object-contain" loading="lazy" decoding="async" />
+                  ) : (
+                    demo.logoText
+                  )}
+                </div>
+
+                <div class="rounded-2xl border border-white/80 bg-white/85 p-5 shadow-sm backdrop-blur">
+                  <div class="h-2 w-28 rounded-full" style={`background: linear-gradient(90deg, ${demo.theme.colors.primary}, ${demo.theme.colors.accent});`}></div>
+                  <p class="mt-5 text-[0.95rem] font-black uppercase tracking-wide" style={`color: ${demo.theme.colors.primary};`}>
+                    {demo.categoryLabel}
+                  </p>
+                  <h3 class="mt-2 max-w-[14rem] text-2xl font-black text-gray-950">{demo.name}</h3>
+                  <p class="mt-3 min-h-20 text-base leading-8 text-gray-600">{demo.shortDescription}</p>
+                </div>
+              </div>
+
+              <div class="flex flex-1 flex-col p-6">
+                <div>
+                  <p class="text-[0.95rem] font-bold uppercase tracking-wide text-gray-400">Fitur bisnis</p>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {demoFeatures.map((feature) => (
+                      <span class="rounded-full bg-gray-50 px-3 py-1.5 text-[0.95rem] font-semibold text-gray-700">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="mt-6">
+                  <p class="text-[0.95rem] font-bold uppercase tracking-wide text-gray-400">Skill yang ditunjukkan</p>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {techBadges.map((badge) => (
+                      <span class="rounded-full border border-gray-200 px-3 py-1.5 text-[0.95rem] font-semibold text-gray-600">
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <p class="mt-6 text-base font-bold leading-8 text-gray-800">{demo.tagline}</p>
+
+                <div class="mt-auto flex items-center justify-between gap-4 border-t border-gray-100 pt-6">
+                  <span class="rounded-full bg-gray-50 px-3 py-1.5 text-[0.95rem] font-bold uppercase tracking-wide text-gray-500">
+                    Sample Project
+                  </span>
+                  <a
+                    href={demo.href}
+                    aria-label={`Lihat demo ${demo.name}`}
+                    class="inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-3 text-base font-bold text-white transition hover:-translate-y-0.5 hover:opacity-90"
+                    style={`background: ${demo.theme.colors.primary};`}
+                  >
+                    Lihat Demo
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
+
+    <section class="bg-white py-16 sm:py-20 lg:py-24">
+      <Container>
+        <div class="overflow-hidden rounded-[2rem] border border-gray-200 bg-white shadow-sm">
+          <div class="grid lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="bg-gray-950 p-8 text-white sm:p-10 lg:p-12">
+              <p class="text-[0.95rem] font-bold uppercase tracking-wide text-orange-300">Manfaat portfolio</p>
+              <h2 class="mt-4 text-3xl font-black leading-tight sm:text-4xl">
+                Lebih kuat dari sekadar slicing landing page biasa.
+              </h2>
+              <p class="mt-5 text-base leading-8 text-gray-300 sm:text-lg">
+                Project ini menunjukkan pemahaman desain landing page UMKM, struktur komponen,
+                data-driven rendering, responsive layout, dan alur CTA yang realistis.
+              </p>
+            </div>
+
+            <div class="grid gap-4 bg-gray-50 p-5 sm:p-6 lg:grid-cols-3 lg:p-8">
+              {portfolioBenefits.map((item) => (
+                <article class="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+                  <h3 class="text-xl font-black text-gray-950">{item.title}</h3>
+                  <p class="mt-3 text-base leading-8 text-gray-600">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+
+    <section class="bg-gray-950 py-16 text-white sm:py-20 lg:py-24">
+      <Container>
+        <div class="grid gap-10 rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 shadow-2xl shadow-black/20 sm:p-8 lg:grid-cols-[1fr_0.78fr] lg:items-center lg:p-10">
+          <div>
+            <p class="text-[0.95rem] font-bold uppercase tracking-wide text-orange-300">Demo berikutnya</p>
+            <h2 class="mt-4 max-w-2xl text-3xl font-black leading-tight sm:text-4xl">
+              Siap menambah niche UMKM baru?
+            </h2>
+            <p class="mt-4 max-w-2xl text-base leading-8 text-gray-300 sm:text-lg">
+              Struktur project sudah siap untuk ditambah barbershop, toko kue, bengkel motor,
+              klinik kecantikan, dan bisnis lokal lain tanpa mengulang dari nol.
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              {nextIdeas.map((idea) => (
+                <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-base font-semibold text-gray-200">
+                  {idea}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+            <p class="text-base font-semibold text-gray-300">Mulai dari demo yang sudah jadi:</p>
+            <div class="mt-4 grid gap-3">
+              <Button href="/demo/dapur-bu-rani" size="lg" class="w-full">Lihat Demo Catering</Button>
+              <Button href="#top" variant="inverted" size="lg" class="w-full">Kembali ke Atas</Button>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </main>
+
+  <footer class="border-t border-gray-200 bg-white py-10">
+    <Container>
+      <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-xl font-black text-gray-950">UMKM Demo Showcase</p>
+          <p class="mt-2 text-base leading-8 text-gray-600">
+            Sample project for UMKM landing page portfolio. Demo concept — bukan bisnis asli.
+          </p>
+          <p class="mt-2 text-[0.95rem] text-gray-500">&copy; {currentYear} UMKM Demo Showcase.</p>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          {demoList.map((demo) => (
+            <a
+              href={demo.href}
+              class="rounded-full border border-gray-200 px-4 py-2 text-base font-bold text-gray-700 transition hover:border-orange-300 hover:text-orange-700"
+            >
+              {demo.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </footer>
+</MainLayout>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="Logo Dapur Bu Rani">
+  <rect width="128" height="128" rx="32" fill="#EA580C"/>
+  <circle cx="64" cy="64" r="46" fill="#FFF7ED" opacity="0.16"/>
+  <path d="M35 72h58c-3 16-15 25-29 25S38 88 35 72Z" fill="#FFF7ED"/>
+  <path d="M42 58c12-13 32-13 44 0" fill="none" stroke="#FFF7ED" stroke-width="10" stroke-linecap="round"/>
+  <path d="M48 50h32" stroke="#FFF7ED" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="46" cy="76" r="4" fill="#EA580C"/>
+  <circle cx="63" cy="80" r="4" fill="#EA580C"/>
+  <circle cx="80" cy="76" r="4" fill="#EA580C"/>
+</svg>

@@ -1,0 +1,80 @@
+---
+import Container from '../common/Container.astro';
+import SectionHeader from '../common/SectionHeader.astro';
+import type { GalleryItem } from '../../data/businesses/types';
+
+interface Props {
+  gallery: GalleryItem[];
+}
+
+const { gallery } = Astro.props;
+const visibleGallery = gallery.slice(0, 6);
+---
+
+{
+  visibleGallery.length > 0 && (
+    <section id="galeri" class="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+      <div
+        aria-hidden="true"
+        class="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_18%_0%,var(--theme-soft,#fff7ed),transparent_36%)]"
+      >
+      </div>
+
+      <Container class="relative">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <SectionHeader
+            eyebrow="Galeri"
+            title="Galeri Layanan"
+            description="Foto dibuat sebagai bagian trust: pelanggan bisa melihat gambaran produk, proses, dan hasil layanan sebelum menghubungi WhatsApp."
+          />
+
+          <p class="max-w-sm text-base leading-8 text-gray-500">
+            Gunakan foto asli jika nanti dipakai untuk bisnis sungguhan. Untuk demo portfolio, rasio gambar dibuat konsisten agar layout tetap rapi.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {visibleGallery.map((item, index) => (
+            <article
+              class:list={[
+                'group overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-950/10',
+                index === 0 ? 'lg:col-span-2 lg:row-span-2' : '',
+              ]}
+            >
+              <div
+                class:list={[
+                  'relative overflow-hidden bg-gradient-to-br from-[var(--theme-background,#fff7ed)] via-white to-[var(--theme-soft,#fff7ed)]',
+                  index === 0 ? 'aspect-[4/3] lg:h-full' : 'aspect-[4/3]',
+                ]}
+              >
+                <div class="absolute inset-0 flex items-center justify-center p-6 text-center">
+                  <div>
+                    <p class="text-[0.95rem] font-bold uppercase tracking-wide text-[var(--theme-primary,#ea580c)]">Sample photo</p>
+                    <p class="mt-2 text-xl font-black text-gray-950">{item.title}</p>
+                  </div>
+                </div>
+
+                {item.image && (
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    onerror="this.style.display='none'"
+                  />
+                )}
+
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-gray-950/80 via-gray-950/40 to-transparent p-5 text-white">
+                  <span class="inline-flex rounded-full bg-white/90 px-3 py-1 text-[0.95rem] font-bold text-gray-950">
+                    {item.title}
+                  </span>
+                  <p class="mt-3 text-base leading-7 text-white/90">{item.description}</p>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
+  )
+}

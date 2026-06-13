@@ -1,0 +1,62 @@
+---
+import Button from '../common/Button.astro';
+import Container from '../common/Container.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  whatsappUrl: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const { title, description, whatsappUrl, primaryLabel = 'Hubungi via WhatsApp', secondaryHref, secondaryLabel } = Astro.props;
+const cleanSecondaryHref = secondaryHref?.trim();
+const cleanSecondaryLabel = secondaryLabel?.trim();
+---
+
+<section class="bg-gray-950 py-16 text-white sm:py-20 lg:py-24">
+  <Container>
+    <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-gray-950/20 sm:p-8 lg:p-10">
+      <div
+        aria-hidden="true"
+        class="absolute inset-y-0 right-0 w-1/2 opacity-10"
+        style="background: var(--theme-primary,#ea580c);"
+      >
+      </div>
+
+      <div class="relative grid gap-8 lg:grid-cols-[1fr_0.7fr] lg:items-center">
+        <div>
+          <p class="text-[0.95rem] font-bold uppercase tracking-wide text-[var(--theme-accent,#f59e0b)]">Siap mulai?</p>
+          <h2 class="mt-4 max-w-2xl text-3xl font-black leading-tight sm:text-4xl">
+            {title}
+          </h2>
+          <p class="mt-4 max-w-2xl text-base leading-8 text-gray-300 sm:text-lg">
+            {description}
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 lg:items-end">
+          <Button href={whatsappUrl} size="lg" class="w-full lg:w-auto" ariaLabel={primaryLabel}>
+            {primaryLabel}
+          </Button>
+
+          {
+            cleanSecondaryHref && cleanSecondaryLabel && (
+              <Button
+                href={cleanSecondaryHref}
+                variant="inverted"
+                size="lg"
+                class="w-full lg:w-auto"
+                ariaLabel={cleanSecondaryLabel}
+              >
+                {cleanSecondaryLabel}
+              </Button>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

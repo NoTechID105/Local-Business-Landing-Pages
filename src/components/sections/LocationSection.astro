@@ -1,0 +1,89 @@
+---
+import Button from '../common/Button.astro';
+import Container from '../common/Container.astro';
+import SectionHeader from '../common/SectionHeader.astro';
+import type { LocationData } from '../../data/businesses/types';
+
+interface Props {
+  location: LocationData;
+}
+
+const { location } = Astro.props;
+const mapsQuery = location.mapQuery || location.address;
+const encodedMapsQuery = encodeURIComponent(mapsQuery);
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedMapsQuery}`;
+const mapsEmbedUrl = `https://www.google.com/maps?q=${encodedMapsQuery}&output=embed`;
+---
+
+<section id="lokasi" class="scroll-mt-28 bg-[var(--theme-background,#fff7ed)] py-20 sm:py-24 lg:py-28">
+  <Container>
+    <div class="overflow-hidden rounded-[2rem] border border-white/80 bg-white shadow-sm">
+      <div class="grid lg:grid-cols-[0.86fr_1.14fr]">
+        <div class="border-b border-gray-100 p-7 sm:p-9 lg:border-b-0 lg:border-r">
+          <SectionHeader
+            eyebrow="Lokasi"
+            title="Lokasi & Area Layanan"
+            description="Alamat, jam operasional, dan jangkauan layanan ditampilkan jelas agar pelanggan mudah menentukan rute atau area pengantaran."
+          />
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl bg-gray-50 p-5">
+              <p class="text-base font-semibold text-gray-500">Alamat</p>
+              <p class="mt-2 text-base font-semibold leading-8 text-gray-950">{location.address}</p>
+            </div>
+            <div class="rounded-2xl bg-gray-50 p-5">
+              <p class="text-base font-semibold text-gray-500">Jam operasional</p>
+              <p class="mt-2 text-base font-semibold leading-8 text-gray-950">{location.hours}</p>
+            </div>
+          </div>
+
+          {location.notes && <p class="mt-6 text-base leading-8 text-gray-500">{location.notes}</p>}
+
+          <div class="mt-7 rounded-2xl border border-[var(--theme-primary,#ea580c)]/15 bg-[var(--theme-surface,#fff7ed)]/70 p-5">
+            <p class="text-[0.95rem] font-bold uppercase tracking-wide text-[var(--theme-primary,#ea580c)]">Koordinasi kunjungan</p>
+            <p class="mt-2 text-base leading-8 text-gray-600">
+              Chat terlebih dahulu untuk konfirmasi area layanan, jadwal, dan estimasi kedatangan.
+            </p>
+          </div>
+
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+            <Button href={mapsUrl} target="_blank" variant="outline" ariaLabel="Buka lokasi di Google Maps">
+              Buka di Google Maps
+            </Button>
+          </div>
+        </div>
+
+        <div class="grid grid-rows-[auto_1fr] bg-white">
+          <div class="p-7 sm:p-9">
+            <div class="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
+              <div>
+                <p class="text-[0.95rem] font-bold uppercase tracking-wide text-[var(--theme-primary,#ea580c)]">Area layanan</p>
+                <p class="mt-2 max-w-xl text-base leading-8 text-gray-500">
+                  Pelanggan bisa mengecek area layanan dan langsung membuka rute melalui Google Maps.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-2 xl:max-w-sm xl:justify-end">
+                {location.areaServed.map((area) => (
+                  <span class="rounded-xl border border-gray-200 bg-white px-3 py-2 text-base font-semibold text-gray-700 shadow-sm">
+                    {area}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="relative h-[340px] overflow-hidden border-t border-gray-100 bg-gray-100 sm:h-[400px] lg:h-full lg:min-h-[430px]">
+            <iframe
+              src={mapsEmbedUrl}
+              title={`Peta lokasi ${location.address}`}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="pointer-events-none h-full w-full border-0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

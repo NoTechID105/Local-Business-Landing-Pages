@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const baseUrl = Astro.site ?? Astro.url;
+const {
+  title = 'UMKM Demo Showcase',
+  description = 'Etalase demo landing page untuk berbagai bisnis UMKM lokal.',
+  ogImage = '/favicon.svg',
+  canonicalUrl = Astro.url.pathname,
+} = Astro.props;
+
+const resolvedCanonicalUrl = new URL(canonicalUrl, baseUrl).toString();
+const resolvedOgImage = new URL(ogImage, baseUrl).toString();
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={resolvedCanonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={resolvedCanonicalUrl} />
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedOgImage} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen antialiased">
+    <slot />
+  </body>
+</html>

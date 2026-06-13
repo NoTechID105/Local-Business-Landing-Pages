@@ -1,0 +1,166 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+import Navbar from '../../components/common/Navbar.astro';
+import Footer from '../../components/common/Footer.astro';
+import FloatingWhatsApp from '../../components/common/FloatingWhatsApp.astro';
+import Container from '../../components/common/Container.astro';
+
+import HeroSection from '../../components/sections/HeroSection.astro';
+import ProblemSection from '../../components/sections/ProblemSection.astro';
+import ServiceSection from '../../components/sections/ServiceSection.astro';
+import PricingSection from '../../components/sections/PricingSection.astro';
+import FeatureSection from '../../components/sections/FeatureSection.astro';
+import GallerySection from '../../components/sections/GallerySection.astro';
+import TestimonialSection from '../../components/sections/TestimonialSection.astro';
+import OrderStepsSection from '../../components/sections/OrderStepsSection.astro';
+import FAQSection from '../../components/sections/FAQSection.astro';
+import LocationSection from '../../components/sections/LocationSection.astro';
+import FinalCTASection from '../../components/sections/FinalCTASection.astro';
+
+import { businesses } from '../../data/demo-list';
+import {
+  createBusinessWhatsAppMessage,
+  formatWhatsApp,
+} from '../../utils/formatWhatsApp';
+import type { Business, Cta, HeroData } from '../../data/businesses/types';
+
+export function getStaticPaths() {
+  return businesses.map((business) => ({
+    params: {
+      slug: business.slug,
+    },
+    props: {
+      business,
+    },
+  }));
+}
+
+const { business } = Astro.props as { business: Business };
+
+const createWhatsappUrl = (topic?: string) =>
+  formatWhatsApp(
+    business.whatsappNumber,
+    createBusinessWhatsAppMessage(business.name, topic)
+  );
+
+const resolveCtaHref = (cta?: Cta) => {
+  if (!cta) {
+    return undefined;
+  }
+
+  if (cta.href) {
+    return cta.href;
+  }
+
+  if (cta.targetId) {
+    return `#${cta.targetId}`;
+  }
+
+  if (cta.type === 'whatsapp') {
+    return createWhatsappUrl(cta.messageTopic);
+  }
+
+  return undefined;
+};
+
+const whatsappUrl = createWhatsappUrl(business.hero.primaryCta.messageTopic);
+const finalWhatsappUrl = createWhatsappUrl(business.finalCta.primaryCta.messageTopic);
+
+const hero = {
+  ...business.hero,
+  secondaryCta: {
+    ...business.hero.secondaryCta,
+    href: resolveCtaHref(business.hero.secondaryCta),
+  },
+} satisfies HeroData;
+
+const finalSecondaryHref = resolveCtaHref(business.finalCta.secondaryCta);
+const finalSecondaryLabel = business.finalCta.secondaryCta?.label;
+
+const businessStyle = [
+  `--theme-primary: ${business.theme.colors.primary}`,
+  `--theme-secondary: ${business.theme.colors.secondary}`,
+  `--theme-accent: ${business.theme.colors.accent}`,
+  `--theme-background: ${business.theme.colors.background}`,
+  `--theme-surface: ${business.theme.colors.surface}`,
+  `--theme-text: ${business.theme.colors.text}`,
+  `--theme-muted: ${business.theme.colors.muted}`,
+  `--theme-soft: ${business.theme.colors.primary}12`,
+].join('; ');
+
+const shortcutLinks = [
+  { label: 'Layanan', href: '#layanan' },
+  { label: business.navItems.find((item) => item.href === '#harga')?.label ?? 'Harga', href: '#harga' },
+  { label: 'Lokasi', href: '#lokasi' },
+  { label: 'FAQ', href: '#faq' },
+];
+---
+
+<MainLayout
+  title={business.seo.title}
+  description={business.seo.description}
+  ogImage={business.hero.image}
+  canonicalUrl={`/demo/${business.slug}`}
+>
+  <div style={businessStyle} class="bg-[var(--theme-background)] text-[var(--theme-text)]">
+    <Navbar
+      businessName={business.name}
+      logoText={business.logoText}
+      logo={business.logo}
+      navItems={business.navItems}
+      whatsappUrl={whatsappUrl}
+      ctaLabel={business.hero.primaryCta.label}
+    />
+
+    <main>
+      <HeroSection hero={hero} theme={business.theme} whatsappUrl={whatsappUrl} />
+
+      <section class="sticky top-[73px] z-30 border-y border-gray-200 bg-white/92 py-3 shadow-sm backdrop-blur lg:hidden" aria-label="Shortcut section">
+        <Container>
+          <nav class="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {shortcutLinks.map((item) => (
+              <a
+                href={item.href}
+                class="shrink-0 rounded-full border border-gray-200 bg-white px-4 py-2 text-[0.95rem] font-bold text-gray-700 shadow-sm transition hover:border-[var(--theme-primary,#ea580c)] hover:text-[var(--theme-primary,#ea580c)]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </Container>
+      </section>
+
+      <ProblemSection items={business.problems} />
+      <ServiceSection services={business.services} />
+      <PricingSection pricing={business.pricing} whatsappUrl={whatsappUrl} />
+      <FeatureSection features={business.features} />
+      <GallerySection gallery={business.gallery} />
+      <TestimonialSection testimonials={business.testimonials} />
+      <OrderStepsSection steps={business.orderSteps} whatsappUrl={whatsappUrl} />
+      <FAQSection faqs={business.faqs} />
+      <LocationSection location={business.location} />
+      <FinalCTASection
+        title={business.finalCta.title}
+        description={business.finalCta.description}
+        whatsappUrl={finalWhatsappUrl}
+        primaryLabel={business.finalCta.primaryCta.label}
+        secondaryHref={finalSecondaryHref}
+        secondaryLabel={finalSecondaryLabel}
+      />
+    </main>
+
+    <Footer
+      businessName={business.name}
+      logoText={business.logoText}
+      logo={business.logo}
+      tagline={business.tagline}
+      address={business.location.address}
+      openingHours={business.location.hours}
+      whatsappUrl={whatsappUrl}
+      navItems={business.navItems}
+    />
+
+    <FloatingWhatsApp whatsappUrl={whatsappUrl} label={business.hero.primaryCta.label} />
+  </div>
+</MainLayout>

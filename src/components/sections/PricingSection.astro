@@ -1,0 +1,94 @@
+---
+import Button from '../common/Button.astro';
+import Container from '../common/Container.astro';
+import SectionHeader from '../common/SectionHeader.astro';
+import type { PricingItem } from '../../data/businesses/types';
+
+interface Props {
+  pricing: PricingItem[];
+  whatsappUrl: string;
+}
+
+const { pricing, whatsappUrl } = Astro.props;
+const recommendationCopy = ['Pesanan kecil dan rutin', 'Pilihan paling aman', 'Kebutuhan khusus'];
+---
+
+{
+  pricing.length > 0 && (
+    <section id="harga" class="bg-[var(--theme-background,#fff7ed)] py-16 sm:py-20 lg:py-24">
+      <Container>
+        <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <SectionHeader
+            eyebrow="Paket Harga"
+            title="Pilih Paket yang Sesuai"
+            description="Harga dibuat mudah discan, dengan rekomendasi singkat agar pelanggan lebih cepat memilih paket."
+          />
+
+          <div class="rounded-3xl border border-white/70 bg-white/70 p-5 shadow-sm backdrop-blur">
+            <p class="text-base font-semibold text-gray-950">Tips memilih paket</p>
+            <p class="mt-2 text-base leading-8 text-gray-600">
+              Mulai dari paket populer jika belum yakin. Detail paket masih bisa dikonsultasikan lewat WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-4 lg:grid-cols-3">
+          {pricing.map((item, index) => (
+            <article
+              class:list={[
+                'relative flex h-full flex-col rounded-3xl border bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg',
+                item.highlighted ? 'border-[var(--theme-primary,#ea580c)] lg:-translate-y-3' : 'border-gray-200',
+              ]}
+            >
+              {item.highlighted && (
+                <div class="absolute -top-3 left-6 rounded-xl bg-[var(--theme-primary,#ea580c)] px-3 py-1 text-[0.95rem] font-bold text-white shadow-sm">
+                  Paling Populer
+                </div>
+              )}
+
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-[0.95rem] font-bold uppercase text-[var(--theme-primary,#ea580c)]">
+                    Rekomendasi untuk
+                  </p>
+                  <p class="mt-1 text-base font-semibold text-gray-700">
+                    {recommendationCopy[index] ?? 'Kebutuhan fleksibel'}
+                  </p>
+                </div>
+                <span class="rounded-xl bg-[var(--theme-soft,#fff7ed)] px-3 py-1 text-[0.95rem] font-bold text-[var(--theme-primary,#ea580c)]">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </div>
+
+              <h3 class="mt-6 text-2xl font-black text-gray-950">{item.name}</h3>
+              <p class="mt-3 text-base leading-8 text-gray-600">{item.description}</p>
+
+              <div class="mt-6 rounded-2xl bg-gray-50 p-5">
+                <div class="flex items-end gap-2">
+                  <p class="text-3xl font-bold text-gray-950">{item.price}</p>
+                  {item.unit && <p class="pb-1 text-[0.95rem] text-gray-500">{item.unit}</p>}
+                </div>
+              </div>
+
+              <ul class="mt-5 flex-1 space-y-3 text-base leading-7 text-gray-700">
+                {item.features.slice(0, 4).map((feature) => (
+                  <li class="flex gap-2">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--theme-accent,#f59e0b)]"></span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+                {item.features.length > 4 && (
+                  <li class="text-base font-medium text-gray-500">dan benefit lainnya</li>
+                )}
+              </ul>
+
+              <Button href={whatsappUrl} class="mt-7 w-full" ariaLabel={item.ctaLabel ?? 'Pilih Paket Ini'}>
+                {item.ctaLabel ?? 'Pilih Paket Ini'}
+              </Button>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </section>
+  )
+}

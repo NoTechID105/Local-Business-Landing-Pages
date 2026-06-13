@@ -1,0 +1,146 @@
+---
+import Button from './Button.astro';
+import type { BusinessLogo } from '../../data/businesses/types';
+
+interface Props {
+  businessName: string;
+  navItems: {
+    label: string;
+    href: string;
+  }[];
+  whatsappUrl: string;
+  ctaLabel?: string;
+  logoText?: string;
+  logo?: BusinessLogo;
+}
+
+const {
+  businessName,
+  navItems,
+  whatsappUrl,
+  ctaLabel = 'Hubungi WhatsApp',
+  logoText,
+  logo,
+} = Astro.props;
+
+const initials = (logoText || businessName
+  .split(' ')
+  .filter(Boolean)
+  .map((word) => word[0])
+  .join(''))
+  .slice(0, 3)
+  .toUpperCase();
+---
+
+<header
+  data-navbar-root
+  class="sticky top-0 z-40 border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur"
+>
+  <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-3 sm:px-8">
+    <a href="/" class="flex min-w-0 items-center gap-3" aria-label={`${businessName} homepage`}>
+      <span class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-gray-200 bg-[var(--theme-surface,#fff7ed)] p-1 shadow-sm">
+        {logo?.src ? (
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            class="h-full w-full object-contain"
+            loading="eager"
+            decoding="async"
+          />
+        ) : (
+          <span class="flex h-full w-full items-center justify-center rounded-xl bg-gray-950 text-[0.95rem] font-bold text-white">
+            {initials}
+          </span>
+        )}
+      </span>
+      <span class="truncate text-base font-bold text-gray-950 sm:text-lg">
+        {businessName}
+      </span>
+    </a>
+
+    <div class="hidden items-center gap-6 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-[0.95rem] font-medium text-gray-600 transition hover:text-gray-950"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="hidden items-center gap-3 md:flex">
+      <Button href={whatsappUrl} variant="primary" size="sm" ariaLabel={ctaLabel}>
+        {ctaLabel}
+      </Button>
+    </div>
+
+    <button
+      type="button"
+      data-menu-toggle
+      aria-label="Buka menu navigasi"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-gray-800 transition hover:border-gray-400 hover:bg-gray-50 md:hidden"
+    >
+      <span data-menu-open-icon aria-hidden="true" class="flex flex-col gap-1">
+        <span class="block h-0.5 w-5 rounded bg-current"></span>
+        <span class="block h-0.5 w-5 rounded bg-current"></span>
+        <span class="block h-0.5 w-5 rounded bg-current"></span>
+      </span>
+      <span data-menu-close-icon aria-hidden="true" class="hidden text-xl leading-none">
+        &times;
+      </span>
+    </button>
+  </nav>
+
+  <div id="mobile-navigation" data-mobile-menu class="hidden border-t border-gray-200 bg-white md:hidden">
+    <div class="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-4 sm:px-8">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="rounded-lg px-3 py-2 text-[0.95rem] font-medium text-gray-700 transition hover:bg-gray-100 hover:text-gray-950"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <Button href={whatsappUrl} variant="primary" size="md" class="mt-2 w-full" ariaLabel={ctaLabel}>
+        {ctaLabel}
+      </Button>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.querySelectorAll('[data-navbar-root]').forEach((navbar) => {
+    const toggle = navbar.querySelector('[data-menu-toggle]');
+    const menu = navbar.querySelector('[data-mobile-menu]');
+    const openIcon = navbar.querySelector('[data-menu-open-icon]');
+    const closeIcon = navbar.querySelector('[data-menu-close-icon]');
+
+    if (!(toggle instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) {
+      return;
+    }
+
+    const setOpen = (isOpen: boolean) => {
+      menu.classList.toggle('hidden', !isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+      openIcon?.classList.toggle('hidden', isOpen);
+      closeIcon?.classList.toggle('hidden', !isOpen);
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  });
+</script>
