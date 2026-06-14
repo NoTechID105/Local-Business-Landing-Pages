@@ -1,20 +1,21 @@
 # Local Business Landing Pages
 
-Astro + Tailwind CSS landing page portfolio for local business and UMKM website demos.
+Portfolio project berisi kumpulan landing page demo untuk bisnis lokal, UMKM, dan brand kecil. Project ini dibuat menggunakan **Astro**, **Tailwind CSS**, dan pendekatan data-driven agar satu codebase bisa digunakan untuk banyak niche bisnis.
 
 ![Homepage Showcase](public/screenshots/homepage-showcase.png)
 
 ## Overview
 
-**Local Business Landing Pages** adalah project portfolio berbasis Astro yang berisi beberapa contoh landing page untuk bisnis lokal atau UMKM.
+**Local Business Landing Pages** adalah project portfolio frontend yang menampilkan beberapa contoh landing page bisnis dengan karakter visual, warna, CTA, konten, dan alur konversi yang berbeda.
 
-Project ini dibuat untuk menunjukkan bagaimana satu codebase dapat digunakan untuk membuat beberapa landing page bisnis dengan tampilan, warna, konten, CTA, dan karakter visual yang berbeda.
+Project ini tidak dibuat sebagai website jasa pribadi, marketplace, atau aplikasi transaksi. Fokus utamanya adalah menunjukkan kemampuan membangun landing page bisnis yang ringan, responsive, reusable, dan terasa seperti project nyata.
 
 Demo yang tersedia saat ini:
 
-* Dapur Bu Rani — Catering Landing Page
-* FreshKlin Laundry — Laundry Service Landing Page
-* Sejuk Teknik AC — AC Service Landing Page
+* **Dapur Bu Rani** — Catering Landing Page
+* **FreshKlin Laundry** — Laundry Service Landing Page
+* **Sejuk Teknik AC** — AC Service Landing Page
+* **Aurelia Studio** — Premium English Fashion Landing Page
 
 > Demo concept — bukan bisnis asli. Semua nama bisnis, alamat, harga, nomor WhatsApp, testimoni, dan data layanan adalah data dummy untuk kebutuhan portfolio.
 
@@ -34,6 +35,14 @@ Demo pages:
 https://umkm.notech.my.id/demo/dapur-bu-rani
 https://umkm.notech.my.id/demo/freshklin-laundry
 https://umkm.notech.my.id/demo/sejuk-teknik-ac
+https://umkm.notech.my.id/demo/aurelia-studio
+https://umkm.notech.my.id/demo/aurelia-studio/collection
+```
+
+Portfolio:
+
+```txt
+https://notech.my.id
 ```
 
 ---
@@ -48,48 +57,56 @@ https://umkm.notech.my.id/demo/sejuk-teknik-ac
 | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | ![FreshKlin Laundry](public/screenshots/cover-freshklin-laundry.png) | ![Sejuk Teknik AC](public/screenshots/cover-sejuk-teknik-ac.png) |
 
+| Fashion Landing Page                                     |
+| -------------------------------------------------------- |
+| ![Aurelia Studio](public/screenshots/aurelia-studio.png) |
+
 ---
 
 ## Project Goals
 
-Tujuan utama project ini adalah membuat **landing page portfolio UMKM yang terlihat seperti bisnis asli**, bukan sekadar template kosong.
+Tujuan utama project ini adalah membuat **portfolio landing page bisnis yang mudah ditunjukkan ke calon klien**, bukan hanya berupa screenshot desain.
 
 Project ini menunjukkan beberapa kemampuan frontend seperti:
 
 * Membuat landing page bisnis lokal yang modern dan responsive.
-* Menggunakan Astro dynamic route untuk membuat banyak halaman dari data.
+* Membuat homepage showcase untuk menampilkan beberapa demo project.
+* Menggunakan Astro dynamic route untuk halaman demo berbasis data.
 * Memisahkan konten bisnis ke file TypeScript agar mudah dikelola.
 * Membuat komponen reusable untuk section landing page.
 * Menambahkan CTA WhatsApp yang relevan untuk bisnis lokal.
-* Menyiapkan SEO dasar, Open Graph meta tag, dan struktur halaman yang rapi.
-* Membangun static website yang ringan dan mudah dideploy.
+* Menyiapkan SEO dasar, Open Graph meta tag, dan struktur heading yang rapi.
+* Membuat premium English landing page untuk brand fashion.
+* Membuat static website yang ringan dan mudah dideploy.
 
 ---
 
 ## Demo Pages
 
-| Demo              | Business Type                                            | Live URL                  |
-| ----------------- | -------------------------------------------------------- | ------------------------- |
-| Dapur Bu Rani     | Catering, nasi box, snack box, tumpeng mini              | `/demo/dapur-bu-rani`     |
-| FreshKlin Laundry | Laundry kiloan, express, setrika, bed cover, cuci sepatu | `/demo/freshklin-laundry` |
-| Sejuk Teknik AC   | Service AC, cuci AC, isi freon, bongkar pasang AC        | `/demo/sejuk-teknik-ac`   |
+| Demo              | Business Type                                            | Language   | URL                       |
+| ----------------- | -------------------------------------------------------- | ---------- | ------------------------- |
+| Dapur Bu Rani     | Catering, nasi box, snack box, tumpeng mini              | Indonesian | `/demo/dapur-bu-rani`     |
+| FreshKlin Laundry | Laundry kiloan, express, setrika, bed cover, cuci sepatu | Indonesian | `/demo/freshklin-laundry` |
+| Sejuk Teknik AC   | Service AC, cuci AC, isi freon, bongkar pasang AC        | Indonesian | `/demo/sejuk-teknik-ac`   |
+| Aurelia Studio    | Premium fashion boutique landing page                    | English    | `/demo/aurelia-studio`    |
 
 ---
 
 ## Key Features
 
-* Homepage showcase untuk daftar demo UMKM.
+* Homepage showcase untuk daftar project landing page.
 * Dynamic route Astro dengan `/demo/[slug]`.
 * Data-driven rendering dari file TypeScript.
 * Reusable components untuk layout, navbar, footer, button, dan section.
 * Responsive design untuk mobile, tablet, dan desktop.
 * Hero section dengan CTA utama.
-* Layanan dan paket harga.
-* Gallery section.
+* Section layanan dan paket harga.
+* Gallery atau lookbook section.
 * Testimonial section.
 * FAQ accordion dengan vanilla JavaScript.
-* Location section dengan Google Maps embed.
-* Floating WhatsApp button.
+* Location section dengan Google Maps embed untuk demo lokal.
+* Floating WhatsApp button untuk CTA cepat.
+* Product quick view dan collection page untuk demo fashion.
 * SEO dasar dengan title dan meta description.
 * Open Graph meta tag dan Twitter Card.
 * Static Site Generation sehingga ringan untuk production.
@@ -101,6 +118,7 @@ Project ini menunjukkan beberapa kemampuan frontend seperti:
 * Astro
 * Tailwind CSS
 * TypeScript
+* Vanilla JavaScript
 * Static Site Generation
 * Vercel
 * GitHub
@@ -148,7 +166,10 @@ src/
 |-- pages/
 |   |-- index.astro
 |   `-- demo/
-|       `-- [slug].astro
+|       |-- [slug].astro
+|       `-- aurelia-studio/
+|           |-- index.astro
+|           `-- collection.astro
 |
 |-- styles/
 |   `-- global.css
@@ -162,7 +183,7 @@ src/
 
 ## How It Works
 
-Alur render halaman demo:
+Alur render halaman demo lokal:
 
 ```txt
 User membuka /demo/dapur-bu-rani
@@ -173,10 +194,12 @@ Data bisnis diambil dari src/data/businesses
         ↓
 Halaman dirender menggunakan reusable sections
         ↓
-User melihat layanan, harga, testimoni, lokasi, dan CTA WhatsApp
+User melihat layanan, harga, testimoni, lokasi, FAQ, dan CTA WhatsApp
 ```
 
 Dengan pendekatan ini, demo bisnis baru bisa ditambahkan tanpa membuat ulang semua komponen dari awal. Cukup membuat file data bisnis baru, lalu mendaftarkannya ke daftar demo.
+
+Untuk demo fashion, halaman dibuat sebagai special page karena layout, visual direction, hero slider, collection page, dan product quick view memiliki kebutuhan UI yang berbeda dari demo UMKM lokal.
 
 ---
 
@@ -232,6 +255,28 @@ npm.cmd run preview
 
 ---
 
+## Disable Astro Dev Toolbar
+
+To disable Astro Dev Toolbar for this project, update `astro.config.mjs`:
+
+```js
+import { defineConfig } from "astro/config";
+
+export default defineConfig({
+  devToolbar: {
+    enabled: false,
+  },
+});
+```
+
+Or run the command through npm:
+
+```bash
+npm run astro preferences disable devToolbar
+```
+
+---
+
 ## Deployment
 
 This project is deployed on Vercel.
@@ -258,7 +303,7 @@ Publish Directory : dist
 
 ## Data Management
 
-All business content is stored inside:
+All local business content is stored inside:
 
 ```txt
 src/data/businesses/
@@ -289,18 +334,31 @@ This makes the project easier to scale when adding more demo niches.
 * Catering landing page
 * Laundry service landing page
 * AC service landing page
+* Premium fashion landing page
 
 ---
 
 ## Future Improvements
 
-* Add more demo niches such as barbershop, bakery, florist, beauty clinic, motorcycle repair shop, and coffee shop.
-* Add homepage category filter.
-* Add small animation or transition effects.
-* Add a short case study section for each demo.
-* Improve image assets using local optimized images.
-* Add Lighthouse performance screenshot to the README.
+* Add more demo niches such as barbershop, bakery, florist, beauty clinic, motorcycle repair shop, coffee shop, and real estate.
+* Add a case study page for each demo project.
+* Improve local image optimization.
+* Add Lighthouse performance screenshots to the README.
 * Add more realistic business copywriting for each niche.
+* Convert the fashion page into smaller Astro components.
+* Add reusable layout variants for product-based businesses.
+
+---
+
+## Author
+
+Built by **NoTechID**
+
+Portfolio:
+
+```txt
+https://notech.my.id
+```
 
 ---
 
